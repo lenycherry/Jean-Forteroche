@@ -1,0 +1,15 @@
+{
+    "name": "p4/forteroche",
+    "authors": [
+        {
+            "name": "Celia Gaudin Lenoir",
+            "email": "lenoircelia@hotmail.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "blog\\": "content/"
+        }
+    },
+    "require": {}
+}
