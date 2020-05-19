@@ -3,19 +3,19 @@
     <head>
         <meta charset="utf-8" />
         <title><?= $title ?></title>
-        <link href="assets/css/style.css" rel="stylesheet" /> 
+        <link href="content/assets/CSS/style.css" rel="stylesheet" /> 
     </head>
 
     <body>
     <header>
         <h1>Jean Forteroche</h1>
         <nav id="main_navbar">
-            <ol>
-                <li class="books_menu">Livres</li>
+            <ul>
+                <li class="chapter_menu">Chapitres</li>
                 <li class="inscription_button">Inscription</li>
                 <li class="login_button">Connection</li>
                 <li class="logout_button">Déconnection</li>
-            </ol>
+            </ul>
         </nav>
     </header>
 

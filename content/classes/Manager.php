@@ -1,12 +1,15 @@
 <?php
 
 namespace blog\classes;
+use PDO;
 
-abstract class Manager
+class Manager
 {
-    protected function dbConnect()
+    protected $bdd;
+
+    protected function __construct()
     {
-        $db = new \PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
-        return $db;
+        $this->bdd = new PDO('mysql:host=localhost;dbname=jeanforteroche_blog;charset=utf8', 'root', '');
     }
+
 }

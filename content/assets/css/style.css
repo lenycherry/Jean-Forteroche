@@ -2,3 +2,34 @@ body{
     margin: 0;
     padding: 0;
 }
+
+/*/////////////////////HEADER//////////////////*/
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gray;
+}
+header h1{
+    margin-left: 10px;
+}
+#main_navbar ul{
+    display: flex;
+    justify-content: space-between;
+}
+#main_navbar li{
+    list-style: none;
+    margin: 0px 10px;
+}
+/*/////////////////////MAIN//////////////////*/
+
+/*/////////////////////FOOTER//////////////////*/
+footer{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+    width: 100%;
+}
