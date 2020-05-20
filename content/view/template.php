@@ -18,8 +18,12 @@
             </ul>
         </nav>
     </header>
-
+<div>
+    <?php foreach ($chapters as $chapter): ?><a href="chapter/<?php echo $chapter['id']?>"><?php echo $chapter['title'] ?></a>
+    <?php endforeach;?>
+</div>
    <main><?php echo $content ?></main>
+   <div><?php var_dump($chapters); ?></div>
 
    <footer>
        <p>Blog Fictif créé par Célia Gaudin dans le cadre d'un projet d'étude OpenClassrooms</p>

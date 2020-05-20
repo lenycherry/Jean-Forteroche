@@ -7,7 +7,7 @@ class Manager
 {
     protected $bdd;
 
-    protected function __construct()
+    public function __construct()
     {
         $this->bdd = new PDO('mysql:host=localhost;dbname=jeanforteroche_blog;charset=utf8', 'root', '');
     }

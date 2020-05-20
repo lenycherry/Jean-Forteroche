@@ -10,8 +10,9 @@ class View
     {
         $this->template = $template;
     }
-    public function render()
+    public function render($params = array())
     {
+        extract($params);
         $template = $this->template;
         ob_start();
         include($_SERVER['DOCUMENT_ROOT'] . '/P4_lenoir_celia/content/view/' . $template . '.php');

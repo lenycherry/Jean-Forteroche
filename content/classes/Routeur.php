@@ -8,7 +8,8 @@ class Routeur
     private $request;
 
     private $routes = [
-        'home' => ['controller' => 'home', 'method' => 'showHome'],
+        'home'    => ['controller' => 'home',    'method'=> 'showHome'],
+        'chapter' => ['controller'  => 'chapter', 'method'=> 'showChapter']
     ];
 
     public function __construct($request)
