@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title><?= $title ?></title>
         <link href="content/assets/CSS/style.css" rel="stylesheet" /> 
+        <script src="https://cdn.tiny.cloud/1/rrssibdlmdub4vn15tirsynq98km88ytywl7uys8kx9v8lfy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     </head>
 
     <body>
@@ -23,7 +24,7 @@
     <?php endforeach;?>
 </div>
    <main><?php echo $content ?></main>
-   <div><?php var_dump($chapters); ?></div>
+
 
    <footer>
        <p>Blog Fictif créé par Célia Gaudin dans le cadre d'un projet d'étude OpenClassrooms</p>

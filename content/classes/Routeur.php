@@ -8,8 +8,9 @@ class Routeur
     private $request;
 
     private $routes = [
-        'home'    => ['controller' => 'home',    'method'=> 'showHome'],
-        'chapter' => ['controller'  => 'chapter', 'method'=> 'showChapter']
+        'home'          => ['controller' => 'Home',              'method'=> 'showHome'],
+        'chapter'       => ['controller' => 'ChapterController', 'method'=> 'showChapter'],
+        'createChapter' => ['controller'  => 'ChapterController', 'method'=> 'createChapter']
     ];
 
     public function __construct($request)
@@ -32,16 +33,18 @@ class Routeur
         $params = null;
         $elements = explode("/", $this->request);
         unset($elements[0]);
+
         for ($i = 1; $i < count($elements); $i++) {
             $params[$elements[$i]] = $elements[$i + 1];
-            $i++;
+            $i++;      
         }
+        
         if ($_POST) {
             foreach ($_POST as $key => $val) {
                 $params[$key] = $val;
             }
         }
-        return $params;
+        return $params; 
     }
     public function  renderController()
     {
