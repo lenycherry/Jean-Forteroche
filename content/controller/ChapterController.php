@@ -4,6 +4,7 @@ namespace blog\controller;
 
 use blog\model\ChapterManager;
 use blog\classes\View;
+use blog\model\Chapter;
 
 class ChapterController
 {
@@ -12,7 +13,7 @@ class ChapterController
     {
 
         $url = explode('/', $_GET['r']);
-        $id = $url[1];
+        $id = $url[2];
 
         $manager = new ChapterManager();
         $currentChapter = $manager->findChapter($id);
@@ -23,9 +24,21 @@ class ChapterController
 
     public function createChapter()
     {
-            $manager = new ChapterManager();
-            $chapters = $manager->findAllChapter(); 
-            $myView = new View('createChapter');
-            $myView->render(array('chapters' => $chapters));
+        $manager = new ChapterManager();
+        $chapters = $manager->findAllChapter();
+        $myView = new View('createChapter');
+        $myView->render(array('chapters' => $chapters));
+    }
+
+    public function editChapter()
+    {
+        $url = explode('/', $_GET['r']);
+        $id = $url[1];
+        //$id = $_GET['id'];
+        $manager = new ChapterManager();
+        $chapters = $manager->findAllChapter();
+        $currentChapter = $manager->findChapter($id);
+        $myView = new View('editChapter');
+        $myView->render(array('chapters' => $chapters, 'currentChapter' => $currentChapter));
     }
 }

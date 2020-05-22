@@ -1,7 +1,7 @@
 <div>
-<h1>Création d'article</h1>
+<h1>Edition d'article</h1>
 <textarea id='textArea'>
-    Welcome to TinyMCE!
+   <?php echo $currentChapter->getContent();?>
   </textarea>
   <div>Valider</div>
 </div>

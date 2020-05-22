@@ -3,7 +3,7 @@
 namespace blog\classes;
 use PDO;
 
-class Manager
+class Manager //gère la connection à la bdd
 {
     protected $bdd;
 

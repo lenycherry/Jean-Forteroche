@@ -1,6 +1,8 @@
 <?php
-ini_set('display_rerror','on');
-error_reporting(E_ALL);
+class MyConfig
+{
+    public static function start()
+    {
 //Liens absolus
 $root = $_SERVER['DOCUMENT_ROOT'];//obtenir la racine du serveur
 $host = $_SERVER['HTTP_HOST'];//obtenir l'url demandé
@@ -13,3 +15,5 @@ define('CONTROLLER', ROOT.'controller/');
 define('VIEW', ROOT.'view/');
 define('MODEL', ROOT.'model/');
 define('ASSETS', HOST.'assets/');
+    }
+}

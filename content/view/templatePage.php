@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <h1><a href="home">Jean Forteroche</a></h1>
+        <h1><a href="<?php echo HOST;?>home">Jean Forteroche</a></h1>
         <nav id="main_navbar">
             <ul>
                 <li class="chapter_menu">Chapitres</li>
@@ -20,7 +20,7 @@
                 <li class="logout_button">Déconnection</li>
             </ul>
             <div>
-                <?php foreach ($chapters as $chapter) : ?><a href="chapter/<?php echo $chapter['id'] ?>"><?php echo $chapter['title'] ?></a>
+                <?php foreach ($chapters as $chapter) : ?><a href="<?php echo HOST;?>chapter/<?php echo $chapter['id'] ?>"><?php echo $chapter['title'] ?></a>
                 <?php endforeach; ?>
             </div>
         </nav>

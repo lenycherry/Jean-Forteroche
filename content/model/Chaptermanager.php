@@ -5,7 +5,7 @@ namespace blog\model;
 use blog\classes\Manager;
 use PDO;
 
-class ChapterManager extends Manager
+class ChapterManager extends Manager //gère la connection à la bdd par son parent et à la table chapter
 {
 
     public function findAllChapter()
