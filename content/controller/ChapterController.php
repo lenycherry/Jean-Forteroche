@@ -14,12 +14,12 @@ class ChapterController
 
         $url = explode('/', $_GET['r']);
         $id = $url[2];
-
         $manager = new ChapterManager();
         $currentChapter = $manager->findChapter($id);
         $chapters = $manager->findAllChapter(); //stock le résultat de la fonction findAllChapter
         $myView = new View('chapter');
         $myView->render(array('chapters' => $chapters, 'currentChapter' => $currentChapter)); //execute render (mise en mémoire tampon du contenu désiré)
+
     }
 
     public function createChapter()
@@ -34,11 +34,19 @@ class ChapterController
     {
         $url = explode('/', $_GET['r']);
         $id = $url[1];
-        //$id = $_GET['id'];
         $manager = new ChapterManager();
         $chapters = $manager->findAllChapter();
         $currentChapter = $manager->findChapter($id);
         $myView = new View('editChapter');
         $myView->render(array('chapters' => $chapters, 'currentChapter' => $currentChapter));
+    }
+    public function addChapter()
+    {
+        $dataChapter = $_POST['values'];
+        $manager = new ChapterManager();
+        $manager->addChapter($dataChapter);
+        $chapters = $manager->findAllChapter();
+        $myView = new View('home');
+        $myView->render(array('chapters' => $chapters));
     }
 }

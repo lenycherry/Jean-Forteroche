@@ -12,6 +12,7 @@ class Routeur
         'chapter'       => ['controller' => 'ChapterController', 'method'=> 'showChapter'],
         'createChapter' => ['controller' => 'ChapterController', 'method'=> 'createChapter'],
         'editChapter'   => ['controller' => 'ChapterController', 'method'=> 'editChapter'],
+        'addChapter'    => ['controller' => 'ChapterController', 'method' => 'addChapter'],
     ];
 
     public function __construct($request)
@@ -63,7 +64,7 @@ class Routeur
         } else if (!isset($_GET['r'])) {
             header("Location: home");
         } else {
-            echo 'erreur 404';
+            echo 'erreur 404, la page suivante n\'existe pas: ' . $route;
         }
     }
 }

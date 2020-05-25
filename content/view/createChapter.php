@@ -1,10 +1,14 @@
 <div>
 <h1>Création d'article</h1>
-<textarea id='textArea'>
-    Welcome to TinyMCE!
+<form action="<?php echo HOST;?>addChapter" method="post">
+<input type ="text" value="insérer votre titre" name="values[title]" />
+<textarea id='textArea' name= 'values[content]'>
+Rédigez votre chapitre
   </textarea>
-  <div>Valider</div>
+  <input type="submit" value="Valider"/>
+  </form>
 </div>
+
 <script>
     tinymce.init({
         selector: 'textarea#textArea',

@@ -3,7 +3,7 @@
 <textarea id='textArea'>
    <?php echo $currentChapter->getContent();?>
   </textarea>
-  <div>Valider</div>
+  <button><a href="<?php echo HOST;?>editChapter">Valider</a></button>
 </div>
 <script>
     tinymce.init({
