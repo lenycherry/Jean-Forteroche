@@ -1,9 +1,12 @@
 <div>
 <h1>Edition d'article</h1>
+<form action="<?php echo HOST;?>editChapter" method="post">
+<input type ="text" <?php echo $currentChapter->getTitle();?> name="values[title]" />
 <textarea id='textArea'>
    <?php echo $currentChapter->getContent();?>
   </textarea>
-  <button><a href="<?php echo HOST;?>editChapter">Valider</a></button>
+  <input type="submit" value="Valider"/>
+</form>
 </div>
 <script>
     tinymce.init({

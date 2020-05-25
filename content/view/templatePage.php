@@ -5,24 +5,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $title ?></title>
-    <link href="<?php echo ASSETS;?>css/style.css" rel="stylesheet" />
+    <link href="<?php echo ASSETS; ?>css/style.css" rel="stylesheet" />
     <script src="https://cdn.tiny.cloud/1/rrssibdlmdub4vn15tirsynq98km88ytywl7uys8kx9v8lfy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body>
     <header>
-        <h1><a href="<?php echo HOST;?>home">Jean Forteroche</a></h1>
+        <h1><a href="<?php echo HOST; ?>home">Jean Forteroche</a></h1>
         <nav id="main_navbar">
             <ul>
-                <li class="chapter_menu">Chapitres</li>
+                <li id="chapter_menu">Chapitres
+                    <ul class="list_menu">
+                        <?php foreach ($chapters as $chapter) : ?>
+                            <li><a href="<?php echo HOST; ?>chapter/<?php echo $chapter['id'] ?>"><?php echo 'Chapitre ' .$chapter['id'] ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
                 <li class="inscription_button">Inscription</li>
                 <li class="login_button">Connection</li>
                 <li class="logout_button">Déconnection</li>
             </ul>
-            <div>
-                <?php foreach ($chapters as $chapter) : ?><a href="<?php echo HOST;?>chapter/<?php echo $chapter['id'] ?>"><?php echo $chapter['title'] ?></a>
-                <?php endforeach; ?>
-            </div>
         </nav>
     </header>
 
