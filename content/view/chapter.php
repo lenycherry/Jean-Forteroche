@@ -1,6 +1,7 @@
-<?php $title = 'Jean Forteroche'?>
+<?php $title = 'Jean Forteroche Chapitre'?>
 
 
-<div class="chapter_container">
-<?php echo $currentChapter->getContent();?>
+<div id="chapter_container">
+<h1> <?php echo $currentChapter->getTitle();?></h1>
+<p><?php echo $currentChapter->getContent();?></p>
 </div>
