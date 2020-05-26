@@ -38,15 +38,14 @@ class ChapterManager extends Manager //gère la connection à la bdd par son par
 
     public function addChapter($dataChapter)
     {
-  
+
         $bdd = $this->bdd;
         $title = $dataChapter['title'];
         $content = $dataChapter['content'];
         $req = $bdd->prepare('INSERT INTO chapters (title, content) VALUES(:title, :content)');
-$req->execute(array(
-    'title' => $title,
-    'content' => $content,   
-));
-
+        $req->execute(array(
+            'title' => $title,
+            'content' => $content,
+        ));
     }
 }

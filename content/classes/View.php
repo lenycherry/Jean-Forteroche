@@ -6,7 +6,7 @@ class View
 {
     private $template;
 
-    public function __construct($template)
+    public function __construct($template = null)
     {
         $this->template = $template;
     }
@@ -16,9 +16,14 @@ class View
         $template = $this->template;
         //stock la vue dans une mémoire tampon. au moment ou le cache se vide, le contenu de la vue est stocké dans une var $content
         ob_start();
-        include($_SERVER['DOCUMENT_ROOT'] . '/P4_lenoir_celia/content/view/' . $template . '.php');
+        include(VIEW.$template . '.php');
         $content = ob_get_clean();
         //affiche le templatePage + la variable $content déjà présente dans le fichier.
-        include_once($_SERVER['DOCUMENT_ROOT'] . '/P4_lenoir_celia/content/view/templatePage.php');
+        include_once(VIEW.'templatePage.php');
     }
+public function redirect($route)
+{
+    header("Location:" .HOST.$route);
+    exit;
+}
 }
