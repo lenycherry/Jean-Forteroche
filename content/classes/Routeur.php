@@ -13,6 +13,7 @@ class Routeur
         'createChapter' => ['controller' => 'ChapterController', 'method'=> 'createChapter'],
         'editChapter'   => ['controller' => 'ChapterController', 'method'=> 'editChapter'],
         'addChapter'    => ['controller' => 'ChapterController', 'method' => 'addChapter'],
+        'adminPanel'    => ['controller' => 'AdminPanel',        'method'=> 'showAdminPanel'],
     ];
 
     public function __construct($request)
