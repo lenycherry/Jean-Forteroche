@@ -46,7 +46,15 @@ class ChapterController
         $manager = new ChapterManager();
         $manager->addChapter($dataChapter);
         $chapters = $manager->findAllChapter();
-        $myView = new View('home');
-        $myView->render(array('chapters' => $chapters));
+        $myView = new View();
+        $myView->redirect('home');
+    }
+    public function deleteChapter($params)
+    {
+        $id = $params['deleteChapter'];
+        $manager = new ChapterManager();
+        $manager->deleteChapter($id);      
+        $myView = new View();
+        $myView->redirect('adminPanel');
     }
 }

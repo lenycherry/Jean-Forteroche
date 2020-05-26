@@ -8,7 +8,7 @@
     <div class="manage_reportCom_btn btn">Gérer les commentaires signalés</div><!-- en cours : code apparition panneau d'ad-->
 
 
-    
+
     <h2>Chapitres</h2>
     <a href="createChapter" class="create_chapter_btn btn">Créer un nouveau chapitre</a>
     <div id="list_chapters_container">
@@ -18,10 +18,11 @@
                 <?php echo $chapter['title'] ?>
                 <?php echo $chapter['create_date'] ?>
                 <?php echo $chapter['content'] ?>
-                <a href="editChapter" class="edit_com_btn btn">Editer</a>
-                <div class="erase_com_btn btn">Effacer</div>
-                <?php endforeach; ?>  
+                <a href="<?php echo HOST; ?>editChapter/<?php echo $chapter['id'] ?>" class="edit_com_btn btn">Editer</a>
+                <a href="<?php echo HOST; ?>deleteChapter/<?php echo $chapter['id'] ?>" class="erase_com_btn btn">Effacer</a>
             </div>
+        <?php endforeach; ?>
+
     </div>
 
     <h3>Chapitre 1 2 3 ...</h3>

@@ -8,12 +8,16 @@ class Routeur
     private $request;
 
     private $routes = [
-        'home'          => ['controller' => 'Home',              'method'=> 'showHome'],
-        'chapter'       => ['controller' => 'ChapterController', 'method'=> 'showChapter'],
+
         'createChapter' => ['controller' => 'ChapterController', 'method'=> 'createChapter'],
         'editChapter'   => ['controller' => 'ChapterController', 'method'=> 'editChapter'],
         'addChapter'    => ['controller' => 'ChapterController', 'method' => 'addChapter'],
+        'addChapter'    => ['controller' => 'ChapterController', 'method' => 'addChapter'],
+        'deleteChapter' => ['controller' => 'ChapterController', 'method' => 'deleteChapter'],
+        
         'adminPanel'    => ['controller' => 'AdminPanel',        'method'=> 'showAdminPanel'],
+        'home'          => ['controller' => 'Home',              'method'=> 'showHome'],
+        'chapter'       => ['controller' => 'ChapterController', 'method'=> 'showChapter'],
     ];
 
     public function __construct($request)
