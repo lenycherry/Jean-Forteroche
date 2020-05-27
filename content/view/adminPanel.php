@@ -18,8 +18,8 @@
                 <?php echo $chapter['title'] ?>
                 <?php echo $chapter['create_date'] ?>
                 <?php echo $chapter['content'] ?>
-                <a href="<?php echo HOST; ?>editChapter/<?php echo $chapter['id'] ?>" class="edit_com_btn btn">Editer</a>
-                <a href="<?php echo HOST; ?>deleteChapter/<?php echo $chapter['id'] ?>" class="erase_com_btn btn">Effacer</a>
+                <a href="<?php echo HOST; ?>editChapter/id/<?php echo $chapter['id'] ?>" class="edit_com_btn btn">Editer</a>
+                <a href="<?php echo HOST; ?>deleteChapter/id/<?php echo $chapter['id'] ?>" class="erase_com_btn btn">Effacer</a>
             </div>
         <?php endforeach; ?>
 

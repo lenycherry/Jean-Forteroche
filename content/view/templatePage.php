@@ -17,7 +17,7 @@
                 <li id="chapter_menu">Chapitres
                     <ul class="list_menu">
                         <?php foreach ($chapters as $chapter) : ?>
-                            <li><a href="<?php echo HOST; ?>chapter/<?php echo $chapter['id'] ?>"><?php echo $chapter['title'] ?></a></li>
+                            <li><a href="<?php echo HOST; ?>chapter/id/<?php echo $chapter['id'] ?>"><?php echo $chapter['title'] ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </li>

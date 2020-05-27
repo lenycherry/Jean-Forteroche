@@ -1,6 +1,10 @@
-body {
+body , html{
+    height: 100%;
     margin: 0;
     padding: 0;
+}
+main{
+    position: relative;
 }
 
 /*/////////////////////HEADER//////////////////*/
@@ -32,6 +36,7 @@ header h1 {
     flex-direction: column;
     align-items: center;
     background-color: gray;
+    padding: 0px 10px 10px;
 }
 
 #chapter_menu:hover .list_menu {
@@ -61,6 +66,7 @@ margin: 5px;
 
 /*/////////////////////FOOTER//////////////////*/
 footer {
+    position: absolute;
     bottom: 0;
     display: flex;
     align-items: center;

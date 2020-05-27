@@ -10,9 +10,7 @@ class ChapterManager extends Manager //gère la connection à la bdd par son par
 
     public function findAllChapter()
     {
-        $bdd = $this->bdd;
-        $query = "SELECT * FROM chapters ORDER BY id";
-        $req = $bdd->prepare($query);
+        $req = $this->bdd->prepare("SELECT * FROM chapters ORDER BY id");
         $req->execute();
         $chapters = $req->fetchAll();
         return $chapters;
@@ -20,9 +18,7 @@ class ChapterManager extends Manager //gère la connection à la bdd par son par
 
     public function findChapter($id)
     {
-        $bdd = $this->bdd;
-        $query = "SELECT * FROM chapters WHERE id = :id ";
-        $req = $bdd->prepare($query);
+        $req = $this->bdd->prepare("SELECT * FROM chapters WHERE id = :id ");
         $req->bindValue(':id', $id, PDO::PARAM_INT); // définition de la valeur de :id soit le param $id de la fonction en var int
         $req->execute();
         $result = $req->fetch(PDO::FETCH_ASSOC); //stock le résultat de la requête dans la var result
@@ -38,21 +34,29 @@ class ChapterManager extends Manager //gère la connection à la bdd par son par
 
     public function addChapter($dataChapter)
     {
-        $bdd = $this->bdd;
         $title = $dataChapter['title'];
         $content = $dataChapter['content'];
-        $req = $bdd->prepare('INSERT INTO chapters (title, content) VALUES(:title, :content)');
-        $req->execute(array(
-            'title' => $title,
-            'content' => $content,
-        ));
+        $req = $this->bdd->prepare('INSERT INTO chapters (title, content) VALUES(:title, :content)');
+        $req->bindValue(':title', $title, PDO::PARAM_STR);
+        $req->bindValue(':content', $content, PDO::PARAM_STR);
+        $req->execute();
+    }
+
+    public function updateChapter($dataChapter)
+    {
+        $title = $dataChapter['title'];
+        $content = $dataChapter['content'];
+        $id = $dataChapter['id'];
+        $req = $this->bdd->prepare('UPDATE chapters SET title = :title, content = :content, edit_date = NOW() WHERE id = :id');
+        $req->bindValue(':title', $title, PDO::PARAM_STR);
+        $req->bindValue(':content', $content, PDO::PARAM_STR);
+        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req->execute();
     }
 
     public function deleteChapter($id)
     {
-        $bdd = $this->bdd;
-        $query = 'DELETE FROM chapters WHERE id = :id';
-        $req = $bdd->prepare($query);
+        $req = $this->bdd->prepare('DELETE FROM chapters WHERE id = :id');
         $req->bindValue(':id', $id, PDO::PARAM_INT);
         $req->execute();
     }
