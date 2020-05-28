@@ -14,12 +14,13 @@
     <div id="list_chapters_container">
 
         <?php foreach ($chapters as $chapter) : ?>
-            <div id="admin_chap_container">
-                <?php echo $chapter['title'] ?>
-                <?php echo $chapter['create_date'] ?>
-                <?php echo $chapter['content'] ?>
-                <a href="<?php echo HOST; ?>editChapter/id/<?php echo $chapter['id'] ?>" class="edit_com_btn btn">Editer</a>
+            <div id="admin_chapter_container">
+                <h2><?php echo $chapter['title'] ?></h2>
+                <span><?php echo $chapter['create_date'] ?></span>
+                 <?php echo $chapter['content'] ?>
+                <span><a href="<?php echo HOST; ?>editChapter/id/<?php echo $chapter['id'] ?>" class="edit_com_btn btn">Editer</a>
                 <a href="<?php echo HOST; ?>deleteChapter/id/<?php echo $chapter['id'] ?>" class="erase_com_btn btn">Effacer</a>
+                </span>
             </div>
         <?php endforeach; ?>
 
