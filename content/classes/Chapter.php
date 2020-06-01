@@ -1,6 +1,6 @@
 <?php
 
-namespace blog\model;
+namespace blog\classes;
 
 class Chapter
 {

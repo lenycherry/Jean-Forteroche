@@ -1,6 +1,10 @@
-body {
+body , html{
+    height: 100%;
     margin: 0;
     padding: 0;
+}
+main{
+    position: relative;
 }
 
 /*/////////////////////HEADER//////////////////*/
@@ -32,6 +36,7 @@ header h1 {
     flex-direction: column;
     align-items: center;
     background-color: gray;
+    padding: 0px 10px 10px;
 }
 
 #chapter_menu:hover .list_menu {
@@ -58,13 +63,41 @@ margin: 5px;
 }
 
 /*/////////////////////MAIN//////////////////*/
+main{
+    min-height: 80vh;
+}
 
 /*/////////////////////FOOTER//////////////////*/
 footer {
+    position: relative;
     bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: gray;
     width: 100%;
+}
+/*/////////////////////////TINYMCE///////////////////////*/
+.tox-tinymce{
+    min-height: 60vh;
+}
+/*///////////////////////////ADMIN PANEL/////////////////*/
+#list_chapters_container{
+    display: flex;
+    justify-content: space-around;
+}
+#admin_chapter_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: 300px;
+    margin: 20px 0px;
+    border: 1px solid black;
+    padding: 20px 5px;   
+}
+#admin_chapter_container p{
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

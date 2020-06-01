@@ -4,7 +4,6 @@ namespace blog\controller;
 
 use blog\model\ChapterManager;
 use blog\classes\View;
-use blog\model\Chapter;
 
 class ChapterController
 {
@@ -12,8 +11,7 @@ class ChapterController
     public function showChapter($params)
     {
 
-        $url = explode('/', $_GET['r']);
-        $id = $url[2];
+        extract($params);
         $manager = new ChapterManager();
         $currentChapter = $manager->findChapter($id);
         $chapters = $manager->findAllChapter(); //stock le résultat de la fonction findAllChapter
@@ -22,7 +20,7 @@ class ChapterController
 
     }
 
-    public function createChapter()
+    public function showCreateChapter()// affiche la page de création de chapitre tinyMCE
     {
         $manager = new ChapterManager();
         $chapters = $manager->findAllChapter();
@@ -30,17 +28,22 @@ class ChapterController
         $myView->render(array('chapters' => $chapters));
     }
 
-    public function editChapter()
+    public function showEditChapter($params)
     {
-        $url = explode('/', $_GET['r']);
-        $id = $url[1];
-        $manager = new ChapterManager();
+        extract($params);
+        if(isset($id)){
+            $manager = new ChapterManager();
+            $currentChapter = $manager->findChapter($id);
+        }else{
+            $myView = new View();
+            $myView->redirect('createChapter');
+        }
         $chapters = $manager->findAllChapter();
-        $currentChapter = $manager->findChapter($id);
         $myView = new View('editChapter');
-        $myView->render(array('chapters' => $chapters, 'currentChapter' => $currentChapter));
+        $myView->render(array('chapters' => $chapters,'currentChapter' => $currentChapter));
     }
-    public function addChapter()
+    
+    public function addChapter($params) // Transfère les infos dans la Bdd. Redirige vers home (temporaire)
     {
         $dataChapter = $_POST['values'];
         $manager = new ChapterManager();
@@ -48,5 +51,25 @@ class ChapterController
         $chapters = $manager->findAllChapter();
         $myView = new View();
         $myView->redirect('home');
+<<<<<<< HEAD
+=======
+    }
+    public function updateChapter($params) // Transfère les infos dans la Bdd. Redirige vers home (temporaire)
+    {
+        $dataChapter = $_POST['values'];
+        $manager = new ChapterManager();
+        $manager->updateChapter($dataChapter);
+        $chapters = $manager->findAllChapter();
+        $myView = new View();
+        $myView->redirect('home');
+    }
+    public function deleteChapter($params)
+    {
+        extract($params);
+        $manager = new ChapterManager();
+        $manager->deleteChapter($id);
+        $myView = new View();
+        $myView->redirect('adminPanel');
+>>>>>>> CRUD-Admin
     }
 }
