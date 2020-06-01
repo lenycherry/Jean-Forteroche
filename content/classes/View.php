@@ -12,6 +12,10 @@ class View
     }
     public function render($params = array())
     {
+        if(session_status() == PHP_SESSION_NONE)
+        {
+            session_start();
+        }
         extract($params);
         $template = $this->template;
         //stock la vue dans une mémoire tampon. au moment ou le cache se vide, le contenu de la vue est stocké dans une var $content

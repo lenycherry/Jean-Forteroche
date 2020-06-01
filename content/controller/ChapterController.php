@@ -4,7 +4,6 @@ namespace blog\controller;
 
 use blog\model\ChapterManager;
 use blog\classes\View;
-use blog\model\Chapter;
 
 class ChapterController
 {
