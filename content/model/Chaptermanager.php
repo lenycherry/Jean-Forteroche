@@ -35,17 +35,6 @@ class ChapterManager extends Manager //gère la connection à la bdd par son par
 
     public function addChapter($dataChapter)
     {
-<<<<<<< HEAD
-
-        $bdd = $this->bdd;
-        $title = $dataChapter['title'];
-        $content = $dataChapter['content'];
-        $req = $bdd->prepare('INSERT INTO chapters (title, content) VALUES(:title, :content)');
-        $req->execute(array(
-            'title' => $title,
-            'content' => $content,
-        ));
-=======
         $title = $dataChapter['title'];
         $content = $dataChapter['content'];
         $req = $this->bdd->prepare('INSERT INTO chapters (title, content) VALUES(:title, :content)');
@@ -71,6 +60,5 @@ class ChapterManager extends Manager //gère la connection à la bdd par son par
         $req = $this->bdd->prepare('DELETE FROM chapters WHERE id = :id');
         $req->bindValue(':id', $id, PDO::PARAM_INT);
         $req->execute();
->>>>>>> CRUD-Admin
     }
 }

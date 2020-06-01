@@ -48,18 +48,14 @@ class ChapterController
         $dataChapter = $_POST['values'];
         $manager = new ChapterManager();
         $manager->addChapter($dataChapter);
-        $chapters = $manager->findAllChapter();
         $myView = new View();
         $myView->redirect('home');
-<<<<<<< HEAD
-=======
     }
     public function updateChapter($params) // Transfère les infos dans la Bdd. Redirige vers home (temporaire)
     {
         $dataChapter = $_POST['values'];
         $manager = new ChapterManager();
         $manager->updateChapter($dataChapter);
-        $chapters = $manager->findAllChapter();
         $myView = new View();
         $myView->redirect('home');
     }
@@ -70,6 +66,5 @@ class ChapterController
         $manager->deleteChapter($id);
         $myView = new View();
         $myView->redirect('adminPanel');
->>>>>>> CRUD-Admin
     }
 }
