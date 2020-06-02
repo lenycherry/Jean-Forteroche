@@ -21,9 +21,9 @@
                         <?php endforeach; ?>
                     </ul>
                 </li>
-                <li class="inscription_button">Inscription</li>
-                <li class="login_button">Connection</li>
-                <li class="logout_button">Déconnection</li>
+                <li class="inscription_button btn"><a href="register">Inscription</a></li>
+                <li class="login_button btn">Connection</li>
+                <li class="logout_button btn">Déconnection</li>
             </ul>
         </nav>
     </header>
