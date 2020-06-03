@@ -9,20 +9,17 @@ use PDO;
 class SessionManager extends Manager
 {
     public function formRegister($params)
-
     {
-            extract($params);
-        // On récupère les informations dans le formulaire register
-       
-            $pseudo = htmlentities(trim($pseudo));
-            $mail = htmlentities(strtolower(trim($mail)));
-            $mdp = trim($mdp);
-            $confmdp = trim($confmdp);
-            //hashage du mot de passe
-            $mdp = password_hash($params['mdp'], PASSWORD_BCRYPT);
+        extract($params);
+
+        $pseudo = htmlentities(trim($pseudo));
+        $mail = htmlentities(strtolower(trim($mail)));
+        $mdp = trim($mdp);
+        $confmdp = trim($confmdp);
+        //hashage du mot de passe
+        $mdp = password_hash($params['mdp'], PASSWORD_BCRYPT);
 
         // On insert nos données dans la table utilisateur
-
         $req = $this->bdd->prepare("INSERT INTO users SET pseudo = :pseudo, mdp = :mdp, mail = :mail ");
         $req->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
         $req->bindValue(':mail', $mail, PDO::PARAM_STR);
@@ -46,5 +43,16 @@ class SessionManager extends Manager
 
         $req_pseudo = $req_pseudo->fetch();
         return $req_pseudo;
+    }
+    public function verifLogin($pseudo)
+    {
+
+        $user = $this->bdd->prepare("SELECT * FROM users WHERE pseudo = :pseudo");
+        $user->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+        $user->execute();
+
+        $user = $user->fetch(PDO::FETCH_OBJ);
+        return $user;
+
     }
 }

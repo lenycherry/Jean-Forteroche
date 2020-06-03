@@ -13,13 +13,20 @@ class SessionController
 
     public function showUserRegister()
     {
-        $manager = new ChapterManager();
-        $chapters = $manager->findAllChapter();
-        $myView = new View('register');
-        $myView->render(array('chapters' => $chapters));
+        if (isset($_SESSION['id'])) {
+            $myView = new View();
+            $myView->redirect('home');
+            exit;
+        } else {
+            $manager = new ChapterManager();
+            $chapters = $manager->findAllChapter();
+            $myView = new View('register');
+            $myView->render(array('chapters' => $chapters));
+        }
     }
     public function userRegister($params)
     {
+
         $manager = new SessionManager();
         $erForm  = array();
 
@@ -28,7 +35,7 @@ class SessionController
             extract($params);
             $valid = true;
         }
-        // On récupère les informations dans le formulaire register
+        // On récupère les informations
         if (isset($params)) {
             $pseudo = htmlentities(trim($pseudo));
             $mail = htmlentities(strtolower(trim($mail)));
@@ -77,8 +84,16 @@ class SessionController
 
         // Si toutes les conditions sont remplies alors on fait le traitement vers la bdd via la fonction du model "formRegister"
         if ($valid) {
-
             $manager->formRegister($params);
+            $user = $manager->verifLogin($pseudo);
+session_start();
+            $_SESSION['id'] = $user->id;
+            $_SESSION['pseudo'] = $user->pseudo;
+            $_SESSION['mail'] = $user->mail;
+            $_SESSION['mdp'] = $user->mdp;
+            $_SESSION['admin'] = $user->admin;
+
+           
             $myView = new View();
             $myView->redirect('home');
         } else {
@@ -88,5 +103,69 @@ class SessionController
             $myView = new View('register');
             $myView->render(array('chapters' => $chapters, 'erForm' => $erForm));
         }
+    }
+    public function showUserLogin()
+    {
+        if (isset($_SESSION['id'])) {
+            $myView = new View();
+            $myView->redirect('home');
+            exit;
+        } else {
+            $manager = new ChapterManager();
+            $chapters = $manager->findAllChapter();
+            $myView = new View('login');
+            $myView->render(array('chapters' => $chapters));
+        }
+    }
+    public function userLogin($params)
+    {
+        session_start();
+        $manager = new SessionManager();
+        $erForm  = array();
+        // Si la variable "$params" contient des informations alors on les extrait
+        if (!empty($params)) {
+            extract($params);
+        }
+        // On récupère les informations extraites
+        if (isset($params)) {
+            $pseudo = htmlentities(trim($pseudo));
+            $mdp = trim($mdp);
+        }
+        //  Vérification du champ pseudo
+
+        if (empty($pseudo)) {
+
+            $erForm["empty_pseudo"] = "Veuillez rentrer votre pseudo.";
+        }
+        // Vérification du champ mot de passe 
+        if (empty($mdp)) {
+
+            $erForm["empty_mdp"] = "Veuillez entrer un mot de passe.";
+        }
+        //On vérifie la concordance pseudo mdp 
+        $user = $manager->verifLogin($pseudo);
+        if ($user && password_verify($mdp, $user->mdp)) { //si ils correspondent on récupère ses infos dans la session
+            $_SESSION['id'] = $user->id;
+            $_SESSION['pseudo'] = $user->pseudo;
+            $_SESSION['mail'] = $user->mail;
+            $_SESSION['mdp'] = $user->mdp;
+            $_SESSION['admin'] = $user->admin;
+
+            $myView = new View();
+            $myView->redirect('home');
+        } else if (!empty($mdp) && !empty($pseudo)) {
+            $erForm["wrong_login"] = "Pseudo ou mot de passe incorrect.";
+        }
+        $manager = new ChapterManager();
+        $chapters = $manager->findAllChapter();
+        $myView = new View('login');
+        $myView->render(array('chapters' => $chapters, 'erForm' => $erForm));
+    }
+    public function logout()
+    {
+        session_start();
+        session_destroy();
+        $myView = new View();
+        $myView->redirect('home');
     }
 }

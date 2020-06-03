@@ -10,8 +10,10 @@ class View
     {
         $this->template = $template;
     }
+    
     public function render($params = array())
     {
+      
         if(session_status() == PHP_SESSION_NONE)
         {
             session_start();

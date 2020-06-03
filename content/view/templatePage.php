@@ -21,9 +21,20 @@
                         <?php endforeach; ?>
                     </ul>
                 </li>
-                <li class="inscription_button btn"><a href="register">Inscription</a></li>
-                <li class="login_button btn">Connection</li>
-                <li class="logout_button btn">Déconnection</li>
+
+                <?php
+                if (isset($_SESSION['id'])) {
+                ?>
+                    <li class="logout_button btn"><a href="logout">Déconnection</a></li>
+                <?php
+                } else {
+                ?>
+                    <li class="inscription_button btn"><a href="register">Inscription</a></li>
+                    <li class="login_button btn"><a href="login">Connection</a></li>
+                <?php
+                }
+                ?>
+
             </ul>
         </nav>
     </header>

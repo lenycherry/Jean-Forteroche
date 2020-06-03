@@ -8,8 +8,12 @@ class Routeur
     private $request;
 
     private $routes = [
+        
+        'login'        => ['controller' => 'SessionController', 'method' => 'showUserlogin'],
+        'userLogin'    => ['controller' => 'SessionController', 'method' => 'userLogin'],
         'register'     => ['controller' => 'SessionController', 'method' => 'showUserRegister'],
         'userRegister' => ['controller' => 'SessionController', 'method' => 'userRegister'],
+        'logout'       => ['controller' => 'SessionController', 'method' => 'logout'],
 
         'createChapter' => ['controller' => 'ChapterController', 'method' => 'showCreateChapter'],
         'editChapter'   => ['controller' => 'ChapterController', 'method' => 'showEditChapter'],
