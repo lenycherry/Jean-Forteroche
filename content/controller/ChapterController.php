@@ -43,21 +43,21 @@ class ChapterController
         $myView->render(array('chapters' => $chapters,'currentChapter' => $currentChapter));
     }
     
-    public function addChapter($params) // Transfère les infos dans la Bdd. Redirige vers home (temporaire)
+    public function addChapter($params) 
     {
         $dataChapter = $_POST['values'];
         $manager = new ChapterManager();
         $manager->addChapter($dataChapter);
         $myView = new View();
-        $myView->redirect('home');
+        $myView->redirect('adminPanel');
     }
-    public function updateChapter($params) // Transfère les infos dans la Bdd. Redirige vers home (temporaire)
+    public function updateChapter($params)
     {
         $dataChapter = $_POST['values'];
         $manager = new ChapterManager();
         $manager->updateChapter($dataChapter);
         $myView = new View();
-        $myView->redirect('home');
+        $myView->redirect('adminPanel');
     }
     public function deleteChapter($params)
     {

@@ -86,14 +86,14 @@ class SessionController
         if ($valid) {
             $manager->formRegister($params);
             $user = $manager->verifLogin($pseudo);
-session_start();
+            session_start();
             $_SESSION['id'] = $user->id;
             $_SESSION['pseudo'] = $user->pseudo;
             $_SESSION['mail'] = $user->mail;
             $_SESSION['mdp'] = $user->mdp;
             $_SESSION['admin'] = $user->admin;
 
-           
+
             $myView = new View();
             $myView->redirect('home');
         } else {

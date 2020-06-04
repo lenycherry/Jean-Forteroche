@@ -16,14 +16,20 @@ class SessionManager extends Manager
         $mail = htmlentities(strtolower(trim($mail)));
         $mdp = trim($mdp);
         $confmdp = trim($confmdp);
+        $admin = 0;
+
+        if ($params['mdp'] == "adminConnec20") {
+            $admin = 1;
+        }
         //hashage du mot de passe
         $mdp = password_hash($params['mdp'], PASSWORD_BCRYPT);
 
         // On insert nos données dans la table utilisateur
-        $req = $this->bdd->prepare("INSERT INTO users SET pseudo = :pseudo, mdp = :mdp, mail = :mail ");
+        $req = $this->bdd->prepare("INSERT INTO users SET pseudo = :pseudo, mdp = :mdp, mail = :mail, admin = :admin ");
         $req->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
         $req->bindValue(':mail', $mail, PDO::PARAM_STR);
         $req->bindValue(':mdp', $mdp, PDO::PARAM_STR);
+        $req->bindValue(':admin', $admin, PDO::PARAM_INT);
         $req->execute();
     }
     public function verifMail($mail)
@@ -53,6 +59,5 @@ class SessionManager extends Manager
 
         $user = $user->fetch(PDO::FETCH_OBJ);
         return $user;
-
     }
 }

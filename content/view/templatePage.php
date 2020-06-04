@@ -21,16 +21,21 @@
                         <?php endforeach; ?>
                     </ul>
                 </li>
+                <?php if (isset($_SESSION['admin'])) :?>
+                <?php if ($_SESSION['admin'] == 1) :?>
+                    <li class="admin_button btn"><a href="<?php echo HOST; ?>adminPanel">Panneau d'administration</a></li>
+                <?php endif;?>
+                <?php endif;?>
 
                 <?php
                 if (isset($_SESSION['id'])) {
                 ?>
-                    <li class="logout_button btn"><a href="logout">Déconnection</a></li>
+                    <li class="logout_button btn"><a href="<?php echo HOST; ?>logout">Déconnection</a></li>
                 <?php
                 } else {
                 ?>
-                    <li class="inscription_button btn"><a href="register">Inscription</a></li>
-                    <li class="login_button btn"><a href="login">Connection</a></li>
+                    <li class="inscription_button btn"><a href="<?php echo HOST; ?>register">Inscription</a></li>
+                    <li class="login_button btn"><a href="<?php echo HOST; ?>login">Connection</a></li>
                 <?php
                 }
                 ?>
