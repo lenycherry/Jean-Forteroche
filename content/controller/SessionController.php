@@ -10,20 +10,7 @@ use blog\model\ChapterManager;
 class SessionController
 {
 
-
-    public function showUserRegister()
-    {
-        if (isset($_SESSION['id'])) {
-            $myView = new View();
-            $myView->redirect('home');
-            exit;
-        } else {
-            $manager = new ChapterManager();
-            $chapters = $manager->findAllChapter();
-            $myView = new View('register');
-            $myView->render(array('chapters' => $chapters));
-        }
-    }
+    
     public function userRegister($params)
     {
 
@@ -100,7 +87,7 @@ class SessionController
 
             $manager = new ChapterManager();
             $chapters = $manager->findAllChapter();
-            $myView = new View('register');
+            $myView = new View('login');
             $myView->render(array('chapters' => $chapters, 'erForm' => $erForm));
         }
     }
