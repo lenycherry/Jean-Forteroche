@@ -29,7 +29,7 @@ class ChapterManager extends Manager //gère la connection à la bdd par son par
         $currentChapter->setTitle($result['title']);
         $currentChapter->setContent($result['content']);
         $currentChapter->setCreateDate($result['create_date']);
-        $currentChapter->seteditDate($result['edit_date']);
+        $currentChapter->setEditDate($result['edit_date']);
         return $currentChapter;
     }
 
