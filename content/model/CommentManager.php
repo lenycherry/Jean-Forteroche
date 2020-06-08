@@ -34,11 +34,19 @@ class CommentManager extends Manager
         $comments = $req->fetchAll();
         return $comments;
     }
+    public function findAllCommentPerChapter($id)
+    {
+        $req = $this->bdd->prepare("SELECT * FROM comments WHERE chapter_id = :chapter_id ORDER BY id");
+        $req->bindValue(':chapter_id', $id, PDO::PARAM_STR);
+        $req->execute();
+        $comments = $req->fetchAll();
+        return $comments;
+    }
     public function addComment($dataComment)
     {
         $pseudo = $dataComment['pseudo'];
-        $content = $dataComment['content'];
-        $chapterId = $dataComment['chapter_id'];
+        $content = $dataComment['values']['content'];
+        $chapterId = $dataComment['id'];
         $req = $this->bdd->prepare('INSERT INTO comments (pseudo, content, chapter_id) VALUES(:pseudo, :content, :chapter_id)');
         $req->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
         $req->bindValue(':content', $content, PDO::PARAM_STR);
@@ -66,29 +74,25 @@ class CommentManager extends Manager
     }
     public function reportComment($dataComment)
     {
-        $reported = $dataComment['reported'];
-        $acquit = $dataComment['acquit'];
+        $reported = $dataComment['reported'] +1;
         $id = $dataComment['id'];
-        $req = $this->bdd->prepare('UPDATE comments SET reported = :reported, acquit = :acquit, WHERE id = :id');
+        $req = $this->bdd->prepare('UPDATE comments SET reported = :reported WHERE id = :id');
         $req->bindValue(':id', $id, PDO::PARAM_INT);
         $req->bindValue(':reported',$reported,PDO::PARAM_INT);
-        $req->bindValue(':acquit',$acquit,PDO::PARAM_INT);
         $req->execute();
     }
     public function acquitComment($dataComment)
     {
-        $acquit = $dataComment['acquit'];
-        $reported = $dataComment['reported'];
+        $acquit = 1;
         $id = $dataComment['id'];
-        $req = $this->bdd->prepare('UPDATE comments SET acquit = :acquit, reported = :reported WHERE id = :id');
+        $req = $this->bdd->prepare('UPDATE comments SET acquit = :acquit WHERE id = :id');
         $req->bindValue(':id', $id, PDO::PARAM_INT);
         $req->bindValue(':acquit',$acquit,PDO::PARAM_INT);
-        $req->bindValue(':reported',$reported,PDO::PARAM_INT);
         $req->execute();
     }
     public function seenComment($dataComment)
     {
-        $seen = $dataComment['seen'];
+        $seen = 1;
         $id = $dataComment['id'];
         $req = $this->bdd->prepare('UPDATE comments SET seen = :seen WHERE id = :id');
         $req->bindValue(':id', $id, PDO::PARAM_INT);

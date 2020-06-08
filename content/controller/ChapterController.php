@@ -3,6 +3,7 @@
 namespace blog\controller;
 
 use blog\model\ChapterManager;
+use blog\model\CommentManager;
 use blog\classes\View;
 
 class ChapterController
@@ -12,11 +13,13 @@ class ChapterController
     {
 
         extract($params);
-        $manager = new ChapterManager();
-        $currentChapter = $manager->findChapter($id);
-        $chapters = $manager->findAllChapter(); //stock le résultat de la fonction findAllChapter
+        $chapterManager = new ChapterManager();
+        $commentManager = new CommentManager();
+        $currentChapter = $chapterManager->findChapter($id);
+        $chapters = $chapterManager->findAllChapter(); //stock le résultat de la fonction findAllChapter
+        $comments = $commentManager->findAllCommentPerChapter($id); //stock le résultat de la fonction findAllComment
         $myView = new View('chapter');
-        $myView->render(array('chapters' => $chapters, 'currentChapter' => $currentChapter)); //execute render (mise en mémoire tampon du contenu désiré)
+        $myView->render(array('chapters' => $chapters, 'currentChapter' => $currentChapter, 'comments' => $comments)); //execute render (mise en mémoire tampon du contenu désiré)
 
     }
 

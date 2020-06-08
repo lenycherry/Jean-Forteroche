@@ -21,6 +21,15 @@ class Routeur
         'addChapter'    => ['controller' => 'ChapterController', 'method' => 'addChapter'],
         'deleteChapter' => ['controller' => 'ChapterController', 'method' => 'deleteChapter'],
 
+        'createComment' => ['controller' => 'CommentController', 'method' => 'showCreateComment'],
+        'editComment'   => ['controller' => 'CommentController', 'method' => 'showEditComment'],
+        'updateComment' => ['controller' => 'CommentController', 'method' => 'updateComment'],
+        'addComment'    => ['controller' => 'CommentController', 'method' => 'addComment'],
+        'deleteComment' => ['controller' => 'CommentController', 'method' => 'deleteComment'],
+        'reportComment' => ['controller' => 'CommentController', 'method' => 'reportComment'],
+        'acquitComment' => ['controller' => 'CommentController', 'method' => 'acquitComment'],
+        'seenComment'   => ['controller' => 'CommentController', 'method' => 'seenComment'],
+
         'adminPanel'    => ['controller' => 'AdminPanel',        'method' => 'showAdminPanel'],
         'home'          => ['controller' => 'Home',              'method' => 'showHome'],
         'chapter'       => ['controller' => 'ChapterController', 'method' => 'showChapter'],
