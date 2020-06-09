@@ -1,5 +1,5 @@
-<?php if (isset($_SESSION['admin'])) : ?>
-    <?php if ($_SESSION['admin'] == 1) : ?>
+<?php $title = 'Jean Forteroche - Editer un chapitre' ?>
+<?php if (isset($_SESSION['admin']) && ($_SESSION['admin'] == 1)) : ?>
 <div>
 <h1>Edition de chapitre</h1>
 <form action="<?php echo HOST;?>updateChapter/id/" method="post">
@@ -54,7 +54,7 @@
         contextmenu: "link image imagetools table",
     });
 </script>
-<?php endif; ?>
+
 <?php else : ?>
     <p>Vous n'avez pas accès à cette page</p>
 <?php endif; ?>

@@ -40,7 +40,7 @@ class CommentController
         $manager = new CommentManager();
         $manager->addComment($params);
         $myView = new View();
-        $currentChapter = 'chapter/id/'.$id;
+        $currentChapter = 'chapter/id/' . $id;
         $myView->redirect($currentChapter);
     }
     public function updateComment($params)
@@ -64,22 +64,22 @@ class CommentController
         extract($params);
         $manager = new CommentManager();
         $currentComment = $manager->findComment($id);
-        
-        if ($currentComment->acquit != 1) {
-    
+        if ($currentComment->getAcquit() != 1) {
             $manager->reportComment($currentComment);
-        }
+        }  
         $myView = new View();
-        $myView->redirect('chapter');
+        $chapterId = $currentComment->getChapterId();
+        $currentChapter = 'chapter/id/' . $chapterId;
+        $myView->redirect($currentChapter);
     }
     public function acquitComment($params)
     {
         extract($params);
         $manager = new CommentManager();
         $currentComment = $manager->findComment($id);
-        
+
         if ($currentComment->report > 0) {
-    
+
             $manager->acquitComment($currentComment);
         }
         $myView = new View();
@@ -90,13 +90,12 @@ class CommentController
         extract($params);
         $manager = new CommentManager();
         $currentComment = $manager->findComment($id);
-        
+
         if ($currentComment->seen === 0) {
-    
+
             $manager->seenComment($currentComment);
         }
         $myView = new View();
         $myView->redirect('chapter');
     }
-
 }

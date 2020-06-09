@@ -1,4 +1,4 @@
-<?php $title = 'Connexion - Jean Forteroche'; ?>
+<?php $title = 'Jean Forteroche - Se connecter'; ?>
 
 <?php if(isset($erForm)) : ?>
 <ul id ="error_login_container">

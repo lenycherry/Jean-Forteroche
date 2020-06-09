@@ -1,10 +1,18 @@
-body , html{
+body,
+html {
     height: 100%;
     margin: 0;
     padding: 0;
 }
-main{
+
+main {
     position: relative;
+}
+
+.btn {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 5px;
 }
 
 /*/////////////////////HEADER//////////////////*/
@@ -44,7 +52,7 @@ header h1 {
 }
 
 #chapter_menu .list_menu {
-padding: 0px 0px 5px;
+    padding: 0px 0px 5px;
     width: 145%;
     text-align: center;
     display: none;
@@ -58,12 +66,13 @@ padding: 0px 0px 5px;
 #chapter_menu a:hover {
     background-color: lightblue;
 }
-#chapter_menu .list_menu li{
-margin: 5px;
+
+#chapter_menu .list_menu li {
+    margin: 5px;
 }
 
 /*/////////////////////MAIN//////////////////*/
-main{
+main {
     min-height: 80vh;
 }
 
@@ -77,27 +86,87 @@ footer {
     background-color: gray;
     width: 100%;
 }
+
 /*/////////////////////////TINYMCE///////////////////////*/
-.tox-tinymce{
+.tox-tinymce {
     min-height: 60vh;
 }
+
 /*///////////////////////////ADMIN PANEL/////////////////*/
-#list_chapters_container{
+#menu_admin {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
-#admin_chapter_container{
+/****************Admin chapters**************/
+#admin_chapter h2 {
+    text-align: center;
+}
+
+.list_content_admin {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.admin_content_container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     width: 200px;
     height: 300px;
-    margin: 20px 0px;
+    margin: 20px 10px;
     border: 1px solid black;
-    padding: 20px 5px;   
+    padding: 10px 5px;
 }
-#admin_chapter_container p{
-    margin: 0;
+
+.admin_content_container .resume {
+    padding: 5px 10px;
     overflow: hidden;
-    text-overflow: ellipsis;
+}
+
+.admin_content_container .date_time {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 12px;
+    margin: 10px;
+}
+/****************Admin comments**************/
+#admin_comment h2 {
+    text-align: center;
+}
+
+#admin_comments_content {
+    display: flex;
+    flex-direction: row;
+}
+#comment_container .title_chapter_comment{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+}
+.title_chapter_comment h3{
+    margin: 0px 5px;
+}
+#admin_comments_content{
+    display: none;
+}
+.comment_list_container:hover #admin_comments_content{
+    display: flex;
+}
+/****************Admin comments reported**************/
+#admin_comment_reported h2 {
+    text-align: center;
+}
+
+#admin_comment_reported span {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+
+#admin_comment_reported .acquit_com_btn{
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
 }

@@ -29,14 +29,14 @@ class CommentManager extends Manager
     }
     public function findAllComment()
     {
-        $req = $this->bdd->prepare("SELECT * FROM comments ORDER BY id");
+        $req = $this->bdd->prepare("SELECT * FROM comments ORDER BY id DESC");
         $req->execute();
         $comments = $req->fetchAll();
         return $comments;
     }
     public function findAllCommentPerChapter($id)
     {
-        $req = $this->bdd->prepare("SELECT * FROM comments WHERE chapter_id = :chapter_id ORDER BY id");
+        $req = $this->bdd->prepare("SELECT * FROM comments WHERE chapter_id = :chapter_id ORDER BY id DESC");
         $req->bindValue(':chapter_id', $id, PDO::PARAM_STR);
         $req->execute();
         $comments = $req->fetchAll();
@@ -72,10 +72,10 @@ class CommentManager extends Manager
         $req->bindValue(':id', $id, PDO::PARAM_INT);
         $req->execute();
     }
-    public function reportComment($dataComment)
+    public function reportComment($currentComment)
     {
-        $reported = $dataComment['reported'] +1;
-        $id = $dataComment['id'];
+        $reported = $currentComment->getReported() +1;
+        $id= $currentComment->getId();
         $req = $this->bdd->prepare('UPDATE comments SET reported = :reported WHERE id = :id');
         $req->bindValue(':id', $id, PDO::PARAM_INT);
         $req->bindValue(':reported',$reported,PDO::PARAM_INT);

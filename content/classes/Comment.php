@@ -8,6 +8,7 @@ private $id;
 private $pseudo;
 private $content;
 private $create_date;
+private $edit_date;
 private $reported;
 private $acquit;
 private $seen;
@@ -53,9 +54,9 @@ public function setEditDate($edit_date)
 {
      $this->edit_date = $edit_date;
 }
-public function getReporter()
+public function getReported()
 {
-    return $this->getReported;
+    return $this->reported;
 }
 public function setReported($reported)
 {
@@ -63,7 +64,7 @@ public function setReported($reported)
 }
 public function getAcquit()
 {
-    return $this->getAcquit;
+    return $this->acquit;
 }
 public function setAcquit($acquit)
 {
@@ -71,7 +72,7 @@ public function setAcquit($acquit)
 }
 public function getSeen()
 {
-    return $this->getSeen;
+    return $this->seen;
 }
 public function setSeen($seen)
 {
@@ -79,7 +80,7 @@ public function setSeen($seen)
 }
 public function getChapterId()
 {
-    return $this->getChapter_id;
+    return $this->chapter_id;
 }
 public function setChapterId($chapter_id)
 {
