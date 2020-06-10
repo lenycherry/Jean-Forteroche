@@ -53,11 +53,18 @@ class CommentController
     }
     public function deleteComment($params)
     {
-        extract($params);
+
+        extract($params); 
         $manager = new CommentManager();
+        $currentComment = $manager->findComment($id);
+        $chapterId = $currentComment->getChapterId();
         $manager->deleteComment($id);
-        $myView = new View();
-        $myView->redirect('chapter');
+        $myView = new View(); 
+        if(isset($admin)){
+            $myView->redirect('adminPanel');
+        }
+        $currentChapter = 'chapter/id/' . $chapterId;
+        $myView->redirect($currentChapter);
     }
     public function reportComment($params)
     {
@@ -78,12 +85,12 @@ class CommentController
         $manager = new CommentManager();
         $currentComment = $manager->findComment($id);
 
-        if ($currentComment->report > 0) {
+        if ($currentComment->getReported() > 0) {
 
             $manager->acquitComment($currentComment);
         }
         $myView = new View();
-        $myView->redirect('chapter');
+        $myView->redirect('adminPanel');
     }
     public function seenComment($params)
     {

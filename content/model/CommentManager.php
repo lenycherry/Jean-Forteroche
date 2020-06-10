@@ -6,7 +6,7 @@ use blog\classes\Manager;
 use blog\classes\Comment;
 use PDO;
 
-class CommentManager extends Manager 
+class CommentManager extends Manager
 {
     public function findComment($id)
     {
@@ -74,20 +74,22 @@ class CommentManager extends Manager
     }
     public function reportComment($currentComment)
     {
-        $reported = $currentComment->getReported() +1;
-        $id= $currentComment->getId();
+        $reported = $currentComment->getReported() + 1;
+        $id = $currentComment->getId();
         $req = $this->bdd->prepare('UPDATE comments SET reported = :reported WHERE id = :id');
         $req->bindValue(':id', $id, PDO::PARAM_INT);
-        $req->bindValue(':reported',$reported,PDO::PARAM_INT);
+        $req->bindValue(':reported', $reported, PDO::PARAM_INT);
         $req->execute();
     }
-    public function acquitComment($dataComment)
+    public function acquitComment($currentComment)
     {
         $acquit = 1;
-        $id = $dataComment['id'];
-        $req = $this->bdd->prepare('UPDATE comments SET acquit = :acquit WHERE id = :id');
+        $reported = 0;
+        $id = $currentComment->getId();
+        $req = $this->bdd->prepare('UPDATE comments SET acquit = :acquit, reported = :reported WHERE id = :id');
         $req->bindValue(':id', $id, PDO::PARAM_INT);
-        $req->bindValue(':acquit',$acquit,PDO::PARAM_INT);
+        $req->bindValue(':acquit', $acquit, PDO::PARAM_INT);
+        $req->bindValue(':reported', $reported, PDO::PARAM_INT);
         $req->execute();
     }
     public function seenComment($dataComment)
@@ -96,7 +98,7 @@ class CommentManager extends Manager
         $id = $dataComment['id'];
         $req = $this->bdd->prepare('UPDATE comments SET seen = :seen WHERE id = :id');
         $req->bindValue(':id', $id, PDO::PARAM_INT);
-        $req->bindValue(':seen',$seen,PDO::PARAM_INT);
+        $req->bindValue(':seen', $seen, PDO::PARAM_INT);
         $req->execute();
     }
 }

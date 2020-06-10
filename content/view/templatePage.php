@@ -24,18 +24,18 @@
                 </li>
                 <?php if (isset($_SESSION['admin'])) :?>
                 <?php if ($_SESSION['admin'] == 1) :?>
-                    <li class="admin_button btn"title="Panneau d'administration"><a href="<?php echo HOST; ?>adminPanel"><i class="fas fa-edit fa-2x"></i></a></li>
+                    <li class="admin_button"title="Panneau d'administration"><a href="<?php echo HOST; ?>adminPanel"><i class="fas fa-edit fa-2x"></i></a></li>
                 <?php endif;?>
                 <?php endif;?>
 
                 <?php
                 if (isset($_SESSION['id'])) {
                 ?>
-                    <li class="logout_button btn"title="Déconnexion"><a href="<?php echo HOST; ?>logout"><i class="fas fa-power-off fa-2x"></i></i></a></li>
+                    <li class="logout_button"title="Déconnexion"><a href="<?php echo HOST; ?>logout"><i class="fas fa-power-off fa-2x"></i></i></a></li>
                 <?php
                 } else {
                 ?>
-                    <li class="login_button btn"title="Se connecter"><a href="<?php echo HOST; ?>login"><i class="fas fa-user-circle fa-2x"></i></a></li>
+                    <li class="login_button"title="Se connecter"><a href="<?php echo HOST; ?>login"><i class="fas fa-user-circle fa-2x"></i></a></li>
                 <?php
                 }
                 ?>
@@ -48,8 +48,9 @@
 
 
     <footer>
-        <p>Blog Fictif créé par Célia Gaudin dans le cadre d'un projet d'étude OpenClassrooms</p>
+        <p>Blog Fictif PHP créé par Célia Gaudin dans le cadre d'un projet d'étude OpenClassrooms</p>
     </footer>
+  
 </body>
 
 </html>

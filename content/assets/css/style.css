@@ -97,6 +97,15 @@ footer {
     display: flex;
     justify-content: center;
 }
+
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
+}
+
 /****************Admin chapters**************/
 #admin_chapter h2 {
     text-align: center;
@@ -131,29 +140,33 @@ footer {
     font-size: 12px;
     margin: 10px;
 }
+
 /****************Admin comments**************/
 #admin_comment h2 {
     text-align: center;
 }
 
-#admin_comments_content {
+.admin_comments_content {
     display: flex;
     flex-direction: row;
 }
-#comment_container .title_chapter_comment{
+
+#comment_container .title_chapter_comment {
     display: flex;
     flex-flow: row wrap;
     align-items: baseline;
 }
-.title_chapter_comment h3{
+
+.title_chapter_comment h3 {
     margin: 0px 5px;
 }
-#admin_comments_content{
-    display: none;
-}
-.comment_list_container:hover #admin_comments_content{
+.com_visible{
     display: flex;
 }
+.com_invisible{
+    display: none;
+}
+
 /****************Admin comments reported**************/
 #admin_comment_reported h2 {
     text-align: center;
@@ -165,7 +178,7 @@ footer {
     justify-content: center;
 }
 
-#admin_comment_reported .acquit_com_btn{
+#admin_comment_reported .acquit_com_btn {
     border: 1px solid black;
     padding: 5px;
     margin: 5px;

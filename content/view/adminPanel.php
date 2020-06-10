@@ -1,15 +1,14 @@
 <?php $title = 'Jean Forteroche - Panneau d\'administration' ?>
-<?php if (isset($_SESSION['admin']) && ($_SESSION['admin'] == 1)) : ?>
-
+<!--vérification de présence de session + status d'admin-->
+<?php if (isset($_SESSION) && ($_SESSION['admin'] == 1)) : ?>
 
     <h1> Bienvenue sur l'espace d'administration <?php echo htmlspecialchars($_SESSION['pseudo']); ?></h1>
     <div id="menu_admin">
-        <div class="admin_btn btn">Gérer les Chapitres</div><!-- en cours : code apparition panneau d'ad-->
-        <div class="admin_btn btn">Gérer les commentaires</div><!-- en cours : code apparition panneau d'ad-->
-        <div class="admin_btn btn">Gérer les commentaires signalés</div><!-- en cours : code apparition panneau d'ad-->
+        <div id="admin_chapters_btn" class="btn">Gérer les Chapitres</div>
+        <div id="admin_comments_btn" class="btn">Gérer les commentaires</div>
+        <div id="admin_reported_btn" class="btn">Gérer les commentaires signalés</div>
     </div>
-
-    <div id='admin_chapter'>
+    <div id='admin_chapter' class="invisible">
         <h2>Chapitres</h2>
         <a href="createChapter" class="create_chapter_btn btn">Créer un nouveau chapitre</a>
         <div id="list_chapters_container" class="list_content_admin">
@@ -32,9 +31,7 @@
             <?php endforeach; ?>
         </div>
     </div>
-
-
-    <div id="admin_comment">
+    <div id="admin_comment" class="invisible">
         <?php $totalComments = 0; ?>
         <?php foreach ($comments as $comment) : ?>
             <?php $totalComments++ ?>
@@ -56,7 +53,7 @@
                                 <p>(<?php echo $commentsChapter; ?> Commentaires)</p>
                             </div>
                         </div>
-                        <div id="admin_comments_content">
+                        <div class=" admin_comments_content com_invisible">
                             <?php foreach ($comments as $comment) : ?>
                                 <?php if ($comment['chapter_id'] === $chapter['id']) : ?>
                                     <div class="admin_content_container">
@@ -81,8 +78,7 @@
                 <?php endforeach; ?>
         </div>
     </div>
-
-    <div id="admin_comment_reported">
+    <div id="admin_comment_reported" class="invisible">
         <h2>Commentaires signalés</h2>
         <?php if (isset($comments)) : ?>
             <div id="report_comments_container" class="list_content_admin">
@@ -99,7 +95,7 @@
                                 <?php endif; ?>
                             </div>
                             <span><a href="<?php echo HOST; ?>editComment/id/<?php echo $comment['id'] ?>" class="edit_com_btn btn">Editer</a>
-                                <a href="<?php echo HOST; ?>deleteComment/id/<?php echo $comment['id'] ?>" class="erase_com_btn btn">Effacer</a>
+                                <a href="<?php echo HOST; ?>deleteComment/id/<?php echo $comment['id'] ?>/admin/1" class="erase_com_btn btn">Effacer</a>
                                 <a href="<?php echo HOST; ?>acquitComment/id/<?php echo $comment['id'] ?>" class="acquit_com_btn">Acquitter</a>
                             </span>
                         </div>
@@ -111,3 +107,6 @@
             <p>Vous n'avez pas accès à cette page</p>
         <?php endif; ?>
     </div>
+    <script src="<?php echo ASSETS; ?>js/MenuAdmin.js"></script>
+    <script src="<?php echo ASSETS; ?>js/CommentAdmin.js"></script>
+    <script src="<?php echo ASSETS; ?>js/_main.js"></script>
