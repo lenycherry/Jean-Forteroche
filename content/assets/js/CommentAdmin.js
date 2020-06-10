@@ -1,10 +1,11 @@
 class CommentAdmin {
     constructor(title_chapter_comment) {
         this.titleChapterComment = document.querySelectorAll(title_chapter_comment);
+        this.commentContainer = document.querySelectorAll('.admin_comments_content');
 
         for (let i = 0; i < this.titleChapterComment.length; i++) {
             this.titleChapterComment[i].addEventListener("click", e => {
-                let container = document.querySelector('.admin_comments_content')
+                let container = this.commentContainer[i]
                 this.toggleContainer(container)
             })
         }
