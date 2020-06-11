@@ -37,7 +37,7 @@
             <?php $totalComments++ ?>
         <?php endforeach; ?>
         <h2>Commentaires (<?php echo $totalComments; ?>)</h2>
-        <div id="comment_container">
+        <div id="admin_comment_container">
             <?php foreach ($chapters as $chapter) : ?>
                 <?php if (isset($comments)) : ?>
                     <div class="comment_list_container">
@@ -60,9 +60,9 @@
                                         <h3><?php echo $comment['pseudo'] ?></h3>
                                         <?php echo $comment['content'] ?>
                                         <div class="date_time">
-                                            <time>Crée le <?php echo $chapter['create_date'] ?></time>
-                                            <?php if (isset($chapter['edit_date'])) : ?>
-                                                <time>Edité le <?php echo $chapter['edit_date'] ?></time>
+                                            <time>Crée le <?php echo $comment['create_date'] ?></time>
+                                            <?php if (isset($comment['edit_date'])) : ?>
+                                                <time>Edité le <?php echo $comment['edit_date'] ?></time>
                                             <?php endif; ?>
                                         </div>
                                         <span><a href="<?php echo HOST; ?>editComment/id/<?php echo $comment['id'] ?>" class="edit_com_btn btn">Editer</a>
@@ -89,9 +89,9 @@
                             <p>reporté <?php echo $comment['reported'] ?> fois</p>
                             <?php echo $comment['content'] ?>
                             <div class="date_time">
-                                <time>Crée le <?php echo $chapter['create_date'] ?></time>
-                                <?php if (isset($chapter['edit_date'])) : ?>
-                                    <time>Edité le <?php echo $chapter['edit_date'] ?></time>
+                                <time>Crée le <?php echo $comment['create_date'] ?></time>
+                                <?php if (isset($comment['edit_date'])) : ?>
+                                    <time>Edité le <?php echo $comment['edit_date'] ?></time>
                                 <?php endif; ?>
                             </div>
                             <span><a href="<?php echo HOST; ?>editComment/id/<?php echo $comment['id'] ?>" class="edit_com_btn btn">Editer</a>

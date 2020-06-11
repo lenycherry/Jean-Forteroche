@@ -1,18 +1,109 @@
+/* CSS RESET http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   
+   License: none (public domain)
+*/
+
+html,
 body,
-html {
-    height: 100%;
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
     margin: 0;
     padding: 0;
+    border: 0;
+    vertical-align: baseline;
 }
 
 main {
     position: relative;
+    padding: 10px;
 }
 
 .btn {
     border: 1px solid black;
     margin: 10px;
     padding: 5px;
+}
+
+a {
+    text-decoration: none;
 }
 
 /*/////////////////////HEADER//////////////////*/
@@ -24,27 +115,37 @@ header {
 }
 
 header h1 {
+    margin: 0;
     margin-left: 10px;
+}
+
+#main_navbar {
+    position: relative;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 #main_navbar ul {
     display: flex;
     justify-content: space-between;
+    margin: 0;
 }
 
 #main_navbar li {
     list-style: none;
-    margin: 0px 10px;
+    margin: 0;
     position: relative;
+    padding: 20px 20px;
 }
 
-/*///////////////////////Menu déroulant////////////////*/
+/***************Menu déroulant*****************/
 #chapter_menu {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: gray;
-    padding: 0px 10px 10px;
+    cursor: pointer;
 }
 
 #chapter_menu:hover .list_menu {
@@ -59,20 +160,24 @@ header h1 {
     background-color: gray;
     position: absolute;
     z-index: 100;
-    margin-top: 20px;
+    top: 72px;
 
 }
 
-#chapter_menu a:hover {
+#chapter_menu li:hover {
     background-color: lightblue;
 }
 
 #chapter_menu .list_menu li {
-    margin: 5px;
+    padding: 5px;
+    margin: 0;
 }
 
 /*/////////////////////MAIN//////////////////*/
 main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     min-height: 80vh;
 }
 
@@ -85,6 +190,94 @@ footer {
     justify-content: center;
     background-color: gray;
     width: 100%;
+    height: 60px;
+}
+
+/*//////////////////////////HOME PAGE/////////////////////////*/
+#home_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+#home_container h1{
+    font-size: xxx-large;
+}
+#new_chapter_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+    margin-top: 100px;
+}
+#new_chapter_container h2{
+    margin-bottom: 10px;
+}
+.new_chapter_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    width: 100%;
+    height: 280px;
+    border: solid 1px black;
+    text-overflow: ellipsis;
+}
+.new_chapter_content h3{
+    margin-bottom: 30px;
+}
+#presentation_container{
+    padding: 100px 0px;
+}
+/*/////////////////////////CHAPTER PAGE///////////////////////*/
+#chapter_page_container {
+    width: 100%;
+}
+
+/*************Chapter******************/
+#chapter_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 10px;
+}
+
+/*************Comment******************/
+#comment_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px 10px;
+    border: 1px solid black;
+    padding: 10px 5px;
+}
+
+#comment_container .comment_btn_container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#comment_container .date_time_comment {
+    font-size: 12px;
+    margin: 10px;
+}
+
+#form_add_comment_container {
+    display: flex;
+    flex-direction: column;
+}
+
+#area_add_comment_container {
+    border: solid 1px black;
+    height: 100px;
+    width: 50%;
+    margin: 20px 10px;
+}
+
+#form_add_comment_container .btn {
+    width: max-content;
 }
 
 /*/////////////////////////TINYMCE///////////////////////*/
@@ -151,7 +344,7 @@ footer {
     flex-direction: row;
 }
 
-#comment_container .title_chapter_comment {
+#admin_comment_container .title_chapter_comment {
     display: flex;
     flex-flow: row wrap;
     align-items: baseline;
@@ -160,10 +353,12 @@ footer {
 .title_chapter_comment h3 {
     margin: 0px 5px;
 }
-.com_visible{
+
+.com_visible {
     display: flex;
 }
-.com_invisible{
+
+.com_invisible {
     display: none;
 }
 

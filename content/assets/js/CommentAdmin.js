@@ -9,14 +9,6 @@ class CommentAdmin {
                 this.toggleContainer(container)
             })
         }
-
-
-
-        //this.titleChapterComment.forEach(addEventListener("click", e => {
-        //    let container = document.getElementById('admin_comments_content')
-        //    this.toggleContainer(container)
-        //}))
-
     }
     toggleContainer(container) {
         if (container.classList.contains('com_invisible')) {

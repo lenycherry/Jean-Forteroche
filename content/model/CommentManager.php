@@ -55,15 +55,11 @@ class CommentManager extends Manager
     }
     public function updateComment($dataComment)
     {
-        $pseudo = $dataComment['pseudo'];
         $content = $dataComment['content'];
         $id = $dataComment['id'];
-        $chapterId = $dataComment['chapter_id'];
-        $req = $this->bdd->prepare('UPDATE comments SET pseudo = :pseudo, content = :content, chapter_id = :chapter_id, edit_date = NOW() WHERE id = :id');
-        $req->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+        $req = $this->bdd->prepare('UPDATE comments SET  content = :content, edit_date = NOW() WHERE id = :id');
         $req->bindValue(':content', $content, PDO::PARAM_STR);
         $req->bindValue(':id', $id, PDO::PARAM_INT);
-        $req->bindValue(':chapter_id', $chapterId, PDO::PARAM_INT);
         $req->execute();
     }
     public function deleteComment($id)

@@ -10,7 +10,7 @@ use blog\model\ChapterManager;
 class SessionController
 {
 
-    
+
     public function userRegister($params)
     {
 
@@ -74,13 +74,7 @@ class SessionController
             $manager->formRegister($params);
             $user = $manager->verifLogin($pseudo);
             session_start();
-            $_SESSION['id'] = $user->id;
-            $_SESSION['pseudo'] = $user->pseudo;
-            $_SESSION['mail'] = $user->mail;
-            $_SESSION['mdp'] = $user->mdp;
-            $_SESSION['admin'] = $user->admin;
-
-
+            $this->initSession($user);
             $myView = new View();
             $myView->redirect('home');
         } else {
@@ -132,11 +126,7 @@ class SessionController
         //On vérifie la concordance pseudo mdp 
         $user = $manager->verifLogin($pseudo);
         if ($user && password_verify($mdp, $user->mdp)) { //si ils correspondent on récupère ses infos dans la session
-            $_SESSION['id'] = $user->id;
-            $_SESSION['pseudo'] = $user->pseudo;
-            $_SESSION['mail'] = $user->mail;
-            $_SESSION['mdp'] = $user->mdp;
-            $_SESSION['admin'] = $user->admin;
+            $this->initSession($user);
 
             $myView = new View();
             $myView->redirect('home');
@@ -154,5 +144,13 @@ class SessionController
         session_destroy();
         $myView = new View();
         $myView->redirect('home');
+    }
+    public function initSession($user)
+    {
+        $_SESSION['id'] = $user->id;
+        $_SESSION['pseudo'] = $user->pseudo;
+        $_SESSION['mail'] = $user->mail;
+        $_SESSION['mdp'] = $user->mdp;
+        $_SESSION['admin'] = $user->admin;
     }
 }

@@ -3,6 +3,7 @@
 namespace blog\controller;
 
 use blog\model\CommentManager;
+use blog\model\ChapterManager;
 use blog\classes\View;
 
 class CommentController
@@ -12,10 +13,16 @@ class CommentController
 
         extract($params);
         $manager = new CommentManager();
+        $chapterManager = new ChapterManager();
         $currentComment = $manager->findComment($id);
+        $chapters = $chapterManager->findAllChapter();
         $comments = $manager->findAllComment(); //stock le résultat de la fonction findAllChapter
         $myView = new View('comment');
-        $myView->render(array('comments' => $comments, 'currentComment' => $currentComment)); //execute render (mise en mémoire tampon du contenu désiré)
+        $myView->render(array(
+            'comments' => $comments,
+            'currentComment' => $currentComment,
+            'chapters' => $chapters
+        )); //execute render (mise en mémoire tampon du contenu désiré)
 
     }
     public function showEditComment($params)
@@ -28,9 +35,15 @@ class CommentController
             $myView = new View();
             $myView->redirect('comment');
         }
+        $chapterManager = new ChapterManager();
         $comments = $manager->findAllComment();
+        $chapters = $chapterManager->findAllChapter();
         $myView = new View('editComment');
-        $myView->render(array('comments' => $comments, 'currentComment' => $currentComment));
+        $myView->render(array(
+            'comments' => $comments,
+            'currentComment' => $currentComment,
+            'chapters' => $chapters
+        ));
     }
     public function addComment($params)
     {
@@ -47,20 +60,23 @@ class CommentController
     {
         $dataComment = $_POST['values'];
         $manager = new CommentManager();
+        $currentComment = $manager->findComment($dataComment['id']);
         $manager->updateComment($dataComment);
+        $chapterId = $currentComment->getChapterId();
         $myView = new View();
-        $myView->redirect('chapter');
+        $currentChapter = 'chapter/id/' . $chapterId;
+        $myView->redirect($currentChapter);
     }
     public function deleteComment($params)
     {
 
-        extract($params); 
+        extract($params);
         $manager = new CommentManager();
         $currentComment = $manager->findComment($id);
         $chapterId = $currentComment->getChapterId();
         $manager->deleteComment($id);
-        $myView = new View(); 
-        if(isset($admin)){
+        $myView = new View();
+        if (isset($admin)) {
             $myView->redirect('adminPanel');
         }
         $currentChapter = 'chapter/id/' . $chapterId;
@@ -73,7 +89,7 @@ class CommentController
         $currentComment = $manager->findComment($id);
         if ($currentComment->getAcquit() != 1) {
             $manager->reportComment($currentComment);
-        }  
+        }
         $myView = new View();
         $chapterId = $currentComment->getChapterId();
         $currentChapter = 'chapter/id/' . $chapterId;
