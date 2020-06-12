@@ -1,6 +1,6 @@
 <?php $title = 'Jean Forteroche - Panneau d\'administration' ?>
 <!--vérification de présence de session + status d'admin-->
-<?php if (isset($_SESSION) && ($_SESSION['admin'] == 1)) : ?>
+<?php if (isset($_SESSION['admin']) && ($_SESSION['admin'] == 1)) : ?>
 
     <h1> Bienvenue sur l'espace d'administration <?php echo htmlspecialchars($_SESSION['pseudo']); ?></h1>
     <div id="menu_admin">
@@ -16,7 +16,7 @@
                 <div class="admin_content_container">
                     <h3><?php echo $chapter['title'] ?></h3>
                     <div class="resume">
-                        <p> <?php echo $chapter['content'] ?></p>
+                        <p> <?php echo substr($chapter['content'],0, 255) ?> ...</p>
                     </div>
                     <div class="date_time">
                         <time>Crée le <?php echo $chapter['create_date'] ?></time>
@@ -65,8 +65,8 @@
                                                 <time>Edité le <?php echo $comment['edit_date'] ?></time>
                                             <?php endif; ?>
                                         </div>
-                                        <span><a href="<?php echo HOST; ?>editComment/id/<?php echo $comment['id'] ?>" class="edit_com_btn btn">Editer</a>
-                                            <a href="<?php echo HOST; ?>deleteComment/id/<?php echo $comment['id'] ?>" class="erase_com_btn btn">Effacer</a>
+                                        <span>
+                                            <a href="<?php echo HOST; ?>deleteComment/id/<?php echo $comment['id'] ?>/admin/1" class="erase_com_btn btn">Effacer</a>
                                         </span>
                                     </div>
                                 <?php endif; ?>
@@ -83,10 +83,10 @@
         <?php if (isset($comments)) : ?>
             <div id="report_comments_container" class="list_content_admin">
                 <?php foreach ($comments as $comment) : ?>
-                    <?php if ($comment['reported'] > 1) : ?>
+                    <?php if ($comment['reported'] > 0) : ?>
                         <div class="admin_content_container">
                             <h3><?php echo $comment['pseudo'] ?></h3>
-                            <p>reporté <?php echo $comment['reported'] ?> fois</p>
+                            <p>Ce commentaire a été signalé</p>
                             <?php echo $comment['content'] ?>
                             <div class="date_time">
                                 <time>Crée le <?php echo $comment['create_date'] ?></time>
@@ -94,7 +94,7 @@
                                     <time>Edité le <?php echo $comment['edit_date'] ?></time>
                                 <?php endif; ?>
                             </div>
-                            <span><a href="<?php echo HOST; ?>editComment/id/<?php echo $comment['id'] ?>" class="edit_com_btn btn">Editer</a>
+                            <span><a href="<?php echo HOST; ?>editComment/id/<?php echo $comment['id'] ?>/admin/1" class="edit_com_btn btn">Editer</a>
                                 <a href="<?php echo HOST; ?>deleteComment/id/<?php echo $comment['id'] ?>/admin/1" class="erase_com_btn btn">Effacer</a>
                                 <a href="<?php echo HOST; ?>acquitComment/id/<?php echo $comment['id'] ?>" class="acquit_com_btn">Acquitter</a>
                             </span>

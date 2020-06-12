@@ -11,7 +11,6 @@ private $create_date;
 private $edit_date;
 private $reported;
 private $acquit;
-private $seen;
 private $chapter_id;
 
 public function getId()
@@ -69,14 +68,6 @@ public function getAcquit()
 public function setAcquit($acquit)
 {
      $this->acquit = $acquit;
-}
-public function getSeen()
-{
-    return $this->seen;
-}
-public function setSeen($seen)
-{
-     $this->seen = $seen;
 }
 public function getChapterId()
 {

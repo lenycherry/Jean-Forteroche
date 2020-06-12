@@ -1,5 +1,5 @@
 <?php $title = 'Jean Forteroche - Editer un chapitre' ?>
-<?php if (isset($_SESSION) && ($_SESSION['admin'] == 1)) : ?>
+<?php if (isset($_SESSION['admin']) && ($_SESSION['admin'] == 1)) : ?>
 <div>
 <h1>Edition de chapitre</h1>
 <form action="<?php echo HOST;?>updateChapter/id/" method="post">

@@ -51,6 +51,8 @@ class ChapterController
         $dataChapter = $_POST['values'];
         $manager = new ChapterManager();
         $manager->addChapter($dataChapter);
+        session_start();
+        $_SESSION['flash']['success'] = 'Ce chapitre a bien été ajouté';
         $myView = new View();
         $myView->redirect('adminPanel');
     }
@@ -59,6 +61,8 @@ class ChapterController
         $dataChapter = $_POST['values'];
         $manager = new ChapterManager();
         $manager->updateChapter($dataChapter);
+        session_start();
+        $_SESSION['flash']['success'] = 'Ce chapitre a bien été édité';
         $myView = new View();
         $myView->redirect('adminPanel');
     }
@@ -67,6 +71,8 @@ class ChapterController
         extract($params);
         $manager = new ChapterManager();
         $manager->deleteChapter($id);
+        session_start();
+        $_SESSION['flash']['success'] = 'Ce chapitre a bien été supprimé';
         $myView = new View();
         $myView->redirect('adminPanel');
     }

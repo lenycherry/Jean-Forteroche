@@ -12,7 +12,7 @@
     <h2><a href="<?php echo HOST; ?>chapter/id/<?php echo $lastChapter['id'] ?>">Dernier Chapitre publié</a></h2>
     <div class="new_chapter_content">
         <h3><?php echo $lastChapter['title']; ?></h3>
-        <article><?php echo $lastChapter['content']; ?></article>
+        <article><?php echo substr($lastChapter['content'], 0, 900); ?> ...</article>
     </div>
 </div>
 <div id="presentation_container">

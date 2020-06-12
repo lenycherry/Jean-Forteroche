@@ -6,27 +6,30 @@ class MenuAdmin {
 
 
         this.adminChapterBtn.addEventListener("click", e => {
+            this.closeAll()
             let container = document.getElementById('admin_chapter')
-            this.toggleContainer(container)
+            this.openContainer(container)
         })
         this.adminCommentBtn.addEventListener("click", e => {
+            this.closeAll()
             let container = document.getElementById('admin_comment')
-            this.toggleContainer(container)
+            this.openContainer(container)
         })
         this.adminReportedBtn.addEventListener("click", e => {
+            this.closeAll()
             let container = document.getElementById('admin_comment_reported')
-            this.toggleContainer(container)
+            this.openContainer(container)
         })
     }
-
-    toggleContainer(container) {
+    openContainer(container) {
         if (container.classList.contains('invisible')) {
             container.classList.replace('invisible', 'visible')
-        } else if (container.classList.contains('visible')) {
-            container.classList.replace('visible', 'invisible')
         }
-
     };
-
-
+    closeAll() {
+        let containers = document.getElementsByClassName('visible')
+        for (let i = 0; i < containers.length; i++) {
+            containers[i].classList.replace('visible', 'invisible')
+        }
+    }
 };

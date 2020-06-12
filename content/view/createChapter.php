@@ -1,5 +1,5 @@
 <?php $title = 'Jean Forteroche - Créer un chapitre' ?>
-<?php if (isset($_SESSION) && ($_SESSION['admin'] == 1)) : ?>
+<?php if (isset($_SESSION['admin']) && ($_SESSION['admin'] == 1)) : ?>
 <div>
 <h1>Création d'article</h1>
 <form action="<?php echo HOST;?>addChapter" method="post">

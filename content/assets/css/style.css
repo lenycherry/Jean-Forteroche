@@ -153,6 +153,8 @@ header h1 {
 }
 
 #chapter_menu .list_menu {
+    max-height: 85px;
+    overflow: auto;
     padding: 0px 0px 5px;
     width: 145%;
     text-align: center;

@@ -11,7 +11,7 @@ class ChapterManager extends Manager //gère la connection à la bdd par son par
 
     public function findAllChapter()
     {
-        $req = $this->bdd->prepare("SELECT * FROM chapters ORDER BY id");
+        $req = $this->bdd->prepare("SELECT *,DATE_FORMAT(create_date, '%d/%m/%Y à %Hh%i') AS create_date,DATE_FORMAT(edit_date, '%d/%m/%Y à %Hh%i') AS edit_date FROM chapters ORDER BY id");
         $req->execute();
         $chapters = $req->fetchAll();
         return $chapters;
@@ -19,7 +19,7 @@ class ChapterManager extends Manager //gère la connection à la bdd par son par
 
     public function findChapter($id)
     {
-        $req = $this->bdd->prepare("SELECT * FROM chapters WHERE id = :id ");
+        $req = $this->bdd->prepare("SELECT *, DATE_FORMAT(create_date, '%d/%m/%Y à %Hh%i') AS create_date,DATE_FORMAT(edit_date, '%d/%m/%Y à %Hh%i') AS edit_date FROM chapters WHERE id = :id ");
         $req->bindValue(':id', $id, PDO::PARAM_INT); // définition de la valeur de :id soit le param $id de la fonction en var int
         $req->execute();
         $result = $req->fetch(PDO::FETCH_ASSOC); //stock le résultat de la requête dans la var result

@@ -52,6 +52,7 @@ class CommentController
         $params['pseudo'] = $_SESSION['pseudo'];
         $manager = new CommentManager();
         $manager->addComment($params);
+        $_SESSION['flash']['success'] = 'Ce commentaire a bien été ajouté';
         $myView = new View();
         $currentChapter = 'chapter/id/' . $id;
         $myView->redirect($currentChapter);
@@ -63,18 +64,23 @@ class CommentController
         $currentComment = $manager->findComment($dataComment['id']);
         $manager->updateComment($dataComment);
         $chapterId = $currentComment->getChapterId();
+        $_SESSION['flash']['success'] = 'Ce commentaire a bien été édité';
         $myView = new View();
+        if (isset($admin)) {
+            $myView->redirect('adminPanel');
+        }
         $currentChapter = 'chapter/id/' . $chapterId;
         $myView->redirect($currentChapter);
     }
     public function deleteComment($params)
     {
-
         extract($params);
         $manager = new CommentManager();
         $currentComment = $manager->findComment($id);
         $chapterId = $currentComment->getChapterId();
         $manager->deleteComment($id);
+        session_start();
+        $_SESSION['flash']['success'] = 'Ce commentaire a bien été supprimé';
         $myView = new View();
         if (isset($admin)) {
             $myView->redirect('adminPanel');
@@ -90,6 +96,7 @@ class CommentController
         if ($currentComment->getAcquit() != 1) {
             $manager->reportComment($currentComment);
         }
+        $_SESSION['flash']['success'] = 'Ce commentaire a bien été signalé';
         $myView = new View();
         $chapterId = $currentComment->getChapterId();
         $currentChapter = 'chapter/id/' . $chapterId;
@@ -100,25 +107,12 @@ class CommentController
         extract($params);
         $manager = new CommentManager();
         $currentComment = $manager->findComment($id);
-
         if ($currentComment->getReported() > 0) {
 
             $manager->acquitComment($currentComment);
         }
+        $_SESSION['flash']['success'] = 'Ce commentaire a bien été acquitté';
         $myView = new View();
         $myView->redirect('adminPanel');
-    }
-    public function seenComment($params)
-    {
-        extract($params);
-        $manager = new CommentManager();
-        $currentComment = $manager->findComment($id);
-
-        if ($currentComment->seen === 0) {
-
-            $manager->seenComment($currentComment);
-        }
-        $myView = new View();
-        $myView->redirect('chapter');
     }
 }

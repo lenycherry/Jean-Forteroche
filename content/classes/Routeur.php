@@ -28,7 +28,6 @@ class Routeur
         'deleteComment' => ['controller' => 'CommentController', 'method' => 'deleteComment'],
         'reportComment' => ['controller' => 'CommentController', 'method' => 'reportComment'],
         'acquitComment' => ['controller' => 'CommentController', 'method' => 'acquitComment'],
-        'seenComment'   => ['controller' => 'CommentController', 'method' => 'seenComment'],
 
         'adminPanel'    => ['controller' => 'AdminPanel',        'method' => 'showAdminPanel'],
         'home'          => ['controller' => 'Home',              'method' => 'showHome'],
