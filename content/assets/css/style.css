@@ -1,9 +1,7 @@
 /* CSS RESET http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   
+   v2.0 | 20110126  
    License: none (public domain)
 */
-
 html,
 body,
 div,
@@ -91,14 +89,19 @@ video {
     vertical-align: baseline;
 }
 
-main {
-    position: relative;
-    padding: 10px;
+html {
+    font-family: 'Oswald', sans-serif;
+}
+
+body {
+    background-image: url("../images/main_bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .btn {
     border: 1px solid black;
-    margin: 10px;
     padding: 5px;
 }
 
@@ -106,17 +109,34 @@ a {
     text-decoration: none;
 }
 
-/*/////////////////////HEADER//////////////////*/
+p {
+    font-family: 'New Roman', sans-serif;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////////HEADER//////////////////*/
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: gray;
+    background-color: rgba(27, 33, 39, 0.5);
+    transition: all ease 0.5s;
+}
+
+header:hover {
+    background-color: rgb(27, 33, 39);
 }
 
 header h1 {
-    margin: 0;
     margin-left: 10px;
+}
+
+header h1:hover a {
+    color: rgb(183, 201, 214);
+}
+
+header h1 a {
+    text-decoration: none;
+    color: rgba(106, 138, 159, 1.0);
 }
 
 #main_navbar {
@@ -129,22 +149,30 @@ header h1 {
 #main_navbar ul {
     display: flex;
     justify-content: space-between;
-    margin: 0;
 }
 
 #main_navbar li {
     list-style: none;
-    margin: 0;
     position: relative;
     padding: 20px 20px;
 }
 
-/***************Menu déroulant*****************/
+#main_navbar li i {
+    text-decoration: none;
+    color: rgba(106, 138, 159, 1.0);
+    transition: all ease 0.2s;
+}
+
+#main_navbar li:hover i {
+    color: rgb(183, 201, 214);
+    transform: scale(1.1);
+}
+
+/**************************************************Menu déroulant*****************/
 #chapter_menu {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: gray;
     cursor: pointer;
 }
 
@@ -153,50 +181,68 @@ header h1 {
 }
 
 #chapter_menu .list_menu {
-    max-height: 85px;
-    overflow: auto;
+    max-height: 96px;
     padding: 0px 0px 5px;
     width: 145%;
     text-align: center;
     display: none;
-    background-color: gray;
+    background-color: rgb(27, 33, 39);
     position: absolute;
     z-index: 100;
     top: 72px;
-
+    overflow-y: scroll;
 }
 
-#chapter_menu li:hover {
-    background-color: lightblue;
+#chapter_menu li:hover,
+#chapter_menu li:hover a {
+    background-color: rgba(106, 138, 159, 1.0);
+    color: rgb(27, 33, 39);
 }
 
 #chapter_menu .list_menu li {
     padding: 5px;
-    margin: 0;
 }
 
-/*/////////////////////MAIN//////////////////*/
+#chapter_menu li a {
+    text-decoration: none;
+    color: rgba(106, 138, 159, 1.0);
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////MAIN//////////////////*/
 main {
     display: flex;
-    flex-direction: column;
     align-items: center;
     min-height: 80vh;
+    position: relative;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
-/*/////////////////////FOOTER//////////////////*/
+/*///////////////////////////////////////////////////////////////////////////////////////////FOOTER//////////////////*/
 footer {
     position: relative;
     bottom: 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: gray;
+    background-color: rgba(27, 33, 39, 0.6);
     width: 100%;
-    height: 60px;
+    padding: 25px;
 }
 
-/*//////////////////////////HOME PAGE/////////////////////////*/
-#home_container{
+footer p {
+    color: rgb(106, 138, 159);
+}
+
+footer a {
+    color: rgb(106, 138, 159);
+    font-weight: 600;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////HOME PAGE/////////////////*/
+/*****************************************Title******************/
+#title_container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -204,9 +250,25 @@ footer {
     width: 100%;
     height: 100vh;
 }
-#home_container h1{
-    font-size: xxx-large;
+
+#title_container h1 {
+    font-size: 70px;
+    padding-bottom: 55px;
 }
+
+#title_container h3 {
+    font-size: 20px;
+    padding-bottom: 100px;
+}
+
+/*****************************************summary******************/
+#summary_container {
+    background-color: rgba(183, 201, 214, 0.6);
+    box-shadow: 2px 2px 5px black;
+    padding: 30px;
+}
+
+/*****************************************New chapter******************/
 #new_chapter_container {
     display: flex;
     flex-direction: column;
@@ -214,51 +276,104 @@ footer {
     width: 85%;
     margin-top: 100px;
 }
-#new_chapter_container h2{
+
+#new_chapter_container h2 {
     margin-bottom: 10px;
 }
+
+#new_chapter_container h2 a {
+    color: rgb(106, 138, 159);
+}
+
+#new_chapter_container h2:hover a {
+    color: rgb(183, 201, 214);
+}
+
+#new_chapter_container h3 a {
+    color: rgb(27, 33, 39);
+}
+
 .new_chapter_content {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 15px;
-    width: 100%;
-    height: 280px;
-    border: solid 1px black;
+    width: 70%;
     text-overflow: ellipsis;
-}
-.new_chapter_content h3{
-    margin-bottom: 30px;
-}
-#presentation_container{
-    padding: 100px 0px;
-}
-/*/////////////////////////CHAPTER PAGE///////////////////////*/
-#chapter_page_container {
-    width: 100%;
+    background-color: rgba(183, 201, 214, 0.6);
+    box-shadow: 2px 2px 5px black;
+    border-radius: 3px;
+    margin-bottom: 100px;
 }
 
-/*************Chapter******************/
+
+.new_chapter_content h3 {
+    margin-bottom: 30px;
+}
+
+.new_chapter_content article {
+    margin-bottom: 15px;
+}
+
+/***********************************presentation**********************/
+
+#presentation_container {
+    background-color: rgba(183, 201, 214, 0.6);
+    box-shadow: 2px 2px 5px black;
+    padding: 30px;
+    margin-bottom: 25px;
+}
+
+/*////////////////////////////////////////////////////////////////////////CHAPTER PAGE///////////////////////*/
+#chapter_page_container {
+    width: 60%;
+    margin-top: 50px;
+}
+
+/*************************************Chapter******************/
 #chapter_container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px 10px;
+    background-color: white;
+    border-radius: 2px;
+    padding: 30px 60px;
 }
 
-/*************Comment******************/
-#comment_container {
+#chapter_container h1 {
+    color: rgb(27, 33, 39);
+    margin-bottom: 100px;
+}
+
+#chapter_container time {
+    color: rgb(27, 33, 39);
+    margin-top: 20px;
+}
+
+/************************************Comment******************/
+#comments_container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 20px 10px;
-    border: 1px solid black;
-    padding: 10px 5px;
+    margin: 15px 0px 15px 0px;
+    background-color: white;
+}
+
+#comment_container {
+    background-color: white;
+    padding: 15px;
+    border-top: 1px solid rgb(106, 138, 159);
+
 }
 
 #comment_container .comment_btn_container {
     display: flex;
     justify-content: flex-end;
+}
+
+#comment_container .btn {
+    margin: 5px;
+    color: rgb(106, 138, 159);
 }
 
 #comment_container .date_time_comment {
@@ -269,25 +384,34 @@ footer {
 #form_add_comment_container {
     display: flex;
     flex-direction: column;
+    margin: 15px 0 15px 40px;
 }
 
 #area_add_comment_container {
     border: solid 1px black;
     height: 100px;
-    width: 50%;
-    margin: 20px 10px;
+    width: 90%;
 }
 
 #form_add_comment_container .btn {
     width: max-content;
+    margin: 10px 0;
 }
 
-/*/////////////////////////TINYMCE///////////////////////*/
+#form_add_comment_container .btn {
+    color: rgb(106, 138, 159);
+}
+
+#form_add_comment_container label {
+    color: rgb(106, 138, 159);
+}
+
+/*/////////////////////////////////////////////////////////////////////////////TINYMCE///////////////////////*/
 .tox-tinymce {
     min-height: 60vh;
 }
 
-/*///////////////////////////ADMIN PANEL/////////////////*/
+/*///////////////////////////////////////////////////////////////////////////ADMIN PANEL/////////////////////*/
 #menu_admin {
     display: flex;
     justify-content: center;
@@ -301,7 +425,7 @@ footer {
     display: none;
 }
 
-/****************Admin chapters**************/
+/******************************************Admin chapters**************/
 #admin_chapter h2 {
     text-align: center;
 }
@@ -336,7 +460,7 @@ footer {
     margin: 10px;
 }
 
-/****************Admin comments**************/
+/*****************************************Admin comments**************/
 #admin_comment h2 {
     text-align: center;
 }
@@ -364,7 +488,7 @@ footer {
     display: none;
 }
 
-/****************Admin comments reported**************/
+/***********************************Admin comments reported**************/
 #admin_comment_reported h2 {
     text-align: center;
 }
@@ -379,4 +503,98 @@ footer {
     border: 1px solid black;
     padding: 5px;
     margin: 5px;
+}
+
+/*////////////////////////////////////////////EDIT COMMENT PAGE//////////////////////////////////////////////////////////////////*/
+#edit_page_container {
+    display: flex;
+    flex-flow: column wrap;
+    width: 60%;
+    height: 80vh;
+    justify-content: center;
+}
+
+#edit_page_container form {
+    display: flex;
+    flex-direction: column;
+}
+
+#edit_page_container label {
+    font-size: larger;
+    color: rgb(27, 33, 39);
+}
+
+#area_comment_container {
+    height: 300px;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+#edit_page_container input {
+    color: rgb(106, 138, 159);
+    width: max-content;
+    margin: auto;
+    padding: 10px;
+}
+
+/*////////////////////////////////////////////CREATE CHAPTER PAGE//////////////////////////////////////////////////////////////////*/
+#create_chapter_page_container{
+    width: 60%;
+}
+#create_chapter_page_container form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+#create_chapter_page_container label {
+    color: rgb(27, 33, 39);
+    font-size: x-large;
+}
+
+#create_chapter_page_container #title {
+    color: rgb(27, 33, 39);
+    width: auto;
+    height: 30px;
+}
+#create_chapter_page_container .btn {
+width: max-content;
+align-self: center;
+margin: 10px;
+}
+/*////////////////////////////////////////////LOGIN PAGE//////////////////////////////////////////////////////////////////*/
+#login_forms_container{
+    display: flex;
+    flex-flow: row wrap;
+    width: 60%;
+    height: 80vh;
+    background-color: white;
+    justify-content: space-evenly;
+}
+#log_forms{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+#login_form_container form{
+    display: flex;
+    flex-direction: column;
+}
+#login_form_container input{
+    margin: 10px 0px;
+}
+#register_form_container form{
+    display: flex;
+    flex-direction: column;
+}
+#register_form_container input{
+    margin: 10px 0px;
+}
+#error_login_container{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+}
+#error_login_container li{
+list-style: none;
 }

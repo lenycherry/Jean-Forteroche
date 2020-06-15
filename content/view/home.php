@@ -1,6 +1,6 @@
 <?php $title = 'Jean Forteroche ACCUEIL'; ?>
 
-<div id="home_container">
+<div id="title_container">
     <h1>Un aller simple pour l' Alaska</h1>
     <h3>La nouvelle oeuvre de Jean Forteroche à découvrir chapitre par chapitre.</h3>
 </div>
@@ -13,6 +13,7 @@
     <div class="new_chapter_content">
         <h3><?php echo $lastChapter['title']; ?></h3>
         <article><?php echo substr($lastChapter['content'], 0, 900); ?> ...</article>
+        <h3><a href="<?php echo HOST; ?>chapter/id/<?php echo $lastChapter['id'] ?>">Lire le chapitre</a></h3>
     </div>
 </div>
 <div id="presentation_container">

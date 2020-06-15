@@ -25,7 +25,7 @@
                         <?php endif; ?>
                     </div>
                     <span><a href="<?php echo HOST; ?>editChapter/id/<?php echo $chapter['id'] ?>" class="edit_com_btn btn">Editer</a>
-                        <a href="<?php echo HOST; ?>deleteChapter/id/<?php echo $chapter['id'] ?>" class="erase_com_btn btn">Effacer</a>
+                        <a href="<?php echo HOST; ?>deleteChapter/id/<?php echo $chapter['id'] ?>" class="jf_alert erase_com_btn btn">Effacer</a>
                     </span>
                 </div>
             <?php endforeach; ?>
@@ -66,7 +66,7 @@
                                             <?php endif; ?>
                                         </div>
                                         <span>
-                                            <a href="<?php echo HOST; ?>deleteComment/id/<?php echo $comment['id'] ?>/admin/1" class="erase_com_btn btn">Effacer</a>
+                                            <a href="<?php echo HOST; ?>deleteComment/id/<?php echo $comment['id'] ?>/admin/1" class="jf_alert erase_com_btn btn">Effacer</a>
                                         </span>
                                     </div>
                                 <?php endif; ?>
@@ -95,7 +95,7 @@
                                 <?php endif; ?>
                             </div>
                             <span><a href="<?php echo HOST; ?>editComment/id/<?php echo $comment['id'] ?>/admin/1" class="edit_com_btn btn">Editer</a>
-                                <a href="<?php echo HOST; ?>deleteComment/id/<?php echo $comment['id'] ?>/admin/1" class="erase_com_btn btn">Effacer</a>
+                                <a href="<?php echo HOST; ?>deleteComment/id/<?php echo $comment['id'] ?>/admin/1" class=" jf_alert erase_com_btn btn">Effacer</a>
                                 <a href="<?php echo HOST; ?>acquitComment/id/<?php echo $comment['id'] ?>" class="acquit_com_btn">Acquitter</a>
                             </span>
                         </div>
@@ -107,6 +107,8 @@
             <p>Vous n'avez pas accès à cette page</p>
         <?php endif; ?>
     </div>
+    <script src="<?php echo ASSETS; ?>js/Alert.js"></script>
     <script src="<?php echo ASSETS; ?>js/MenuAdmin.js"></script>
     <script src="<?php echo ASSETS; ?>js/CommentAdmin.js"></script>
     <script src="<?php echo ASSETS; ?>js/_main.js"></script>
+    

@@ -5,7 +5,7 @@
     <div id="chapter_container">
         <h1> <?php echo $currentChapter->getTitle(); ?></h1>
         <p><?php echo $currentChapter->getContent(); ?></p>
-        <date><?php echo $currentChapter->getCreateDate(); ?></date>
+        <time>Crée le <?php echo $currentChapter->getCreateDate(); ?></time>
     </div>
 
     <div id="comments_container">
@@ -20,22 +20,22 @@
             <?php foreach ($comments as $comment) : ?>
                 <div id="comment_container">
                     <h3><?php echo htmlspecialchars($comment['pseudo']) ?></h3>
-                    <?php echo htmlspecialchars($comment['content']) ?>
+                    <p><?php echo htmlspecialchars($comment['content']) ?></p>
                     <div class="date_time_comment">
                         <time>Crée le <?php echo $comment['create_date'] ?></time>
                         <?php if (isset($comment['edit_date'])) : ?>
-                            <time>Edité le <?php echo $comment['edit_date'] ?></time>
+                            <time> - Edité le <?php echo $comment['edit_date'] ?></time>
                         <?php endif; ?>
                     </div>
                     <span class='comment_btn_container'>
                         <?php if (isset($_SESSION['id'])) : ?>
                             <?php if ($_SESSION['pseudo'] === $comment['pseudo']) : ?>
                                 <a href="<?php echo HOST; ?>editComment/id/<?php echo $comment['id'] ?>" class="edit_com_btn btn">Editer</a>
-                                <a href="<?php echo HOST; ?>deleteComment/id/<?php echo $comment['id'] ?>" class="erase_com_btn btn">Effacer</a>
+                                <a href="<?php echo HOST; ?>deleteComment/id/<?php echo $comment['id'] ?>" class="jf_alert erase_com_btn btn">Effacer</a>
 
 
                             <?php else : ?>
-                                <a href="<?php echo HOST; ?>reportComment/id/<?php echo $comment['id'] ?>" class="report_com_btn btn">Signaler</a>
+                                <a href="<?php echo HOST; ?>reportComment/id/<?php echo $comment['id'] ?>" class=" jf_alert report_com_btn btn">Signaler</a>
                             <?php endif; ?>
                         <?php endif; ?>
                     </span>
@@ -44,3 +44,4 @@
         <?php endif; ?>
     </div>
 </div>
+<script src="<?php echo ASSETS; ?>js/Alert.js"></script>

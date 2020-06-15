@@ -7,6 +7,7 @@
     <title><?= $title ?></title>
     <link href="<?php echo ASSETS; ?>css/style.css" rel="stylesheet" />
     <link href="<?php echo ASSETS; ?>fontawesome/css/all.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500&family=Oswald:wght@500&display=swap" rel="stylesheet">
     <script src="https://cdn.tiny.cloud/1/rrssibdlmdub4vn15tirsynq98km88ytywl7uys8kx9v8lfy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
@@ -59,6 +60,7 @@
 
     <footer>
         <p>Blog Fictif PHP créé par Célia Gaudin dans le cadre d'un projet d'étude OpenClassrooms</p>
+        <p>Crédit photo <a href="https://unsplash.com/@jankronies">Jankronies</a></p>
     </footer>
 
 </body>

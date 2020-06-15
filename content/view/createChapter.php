@@ -1,11 +1,12 @@
 <?php $title = 'Jean Forteroche - Créer un chapitre' ?>
 <?php if (isset($_SESSION['admin']) && ($_SESSION['admin'] == 1)) : ?>
-<div>
-<h1>Création d'article</h1>
+<div id="create_chapter_page_container">
 <form action="<?php echo HOST;?>addChapter" method="post">
-<input type ="text" placeholder="Insérer votre titre" name="values[title]" />
+<label for='title'>Titre</label>
+<input id="title" type ="text" placeholder="Insérer votre titre" name="values[title]"/>
+<label for="textArea">Nouveau chapitre</label>
 <textarea id='textArea' name= 'values[content]'placeholder="Rédigez votre chapitre"></textarea>
-  <input type="submit" value="Valider"/>
+  <input class="btn" type="submit" value="Valider"/>
   </form>
 </div>
 
