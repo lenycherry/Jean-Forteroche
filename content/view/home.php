@@ -1,7 +1,7 @@
 <?php $title = 'Jean Forteroche ACCUEIL'; ?>
 
 <div id="title_container">
-    <h1>Un aller simple pour l' Alaska</h1>
+    <h1>Billet simple pour l'Alaska</h1>
     <h3>La nouvelle oeuvre de Jean Forteroche à découvrir chapitre par chapitre.</h3>
 </div>
 <div id="summary_container">

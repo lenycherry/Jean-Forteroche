@@ -100,17 +100,66 @@ body {
     background-repeat: no-repeat;
 }
 
-.btn {
+/*.btn {
     border: 1px solid black;
     padding: 5px;
+    width: max-content;
 }
-
+*/
+.btn {
+    color: rgb(106, 138, 159);
+    transition: all 0.5s;
+    position: relative;
+    padding: 5px 10px;
+    margin: 5px;
+    width: max-content;
+}
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(27,33,39,0.1);
+    transition: all 0.3s;
+}
+.btn:hover::before {
+    opacity: 0 ;
+    transform: scale(0.5,0.5);
+}
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border: 1px solid rgba(27,33,39,0.5);
+    transform: scale(1.2,1.2);
+}
+.btn:hover::after {
+    opacity: 1;
+    transform: scale(1,1);
+}
 a {
     text-decoration: none;
 }
 
 p {
     font-family: 'New Roman', sans-serif;
+    word-break: break-word;
+}
+h3{
+    color: rgb(27, 33, 39);
+}
+
+time {
+    color: rgb(106, 138, 159);
 }
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////////HEADER//////////////////*/
@@ -228,7 +277,7 @@ footer {
     justify-content: center;
     background-color: rgba(27, 33, 39, 0.6);
     width: 100%;
-    padding: 25px;
+    padding: 20px 0px;
 }
 
 footer p {
@@ -346,7 +395,6 @@ footer a {
 }
 
 #chapter_container time {
-    color: rgb(27, 33, 39);
     margin-top: 20px;
 }
 
@@ -371,11 +419,6 @@ footer a {
     justify-content: flex-end;
 }
 
-#comment_container .btn {
-    margin: 5px;
-    color: rgb(106, 138, 159);
-}
-
 #comment_container .date_time_comment {
     font-size: 12px;
     margin: 10px;
@@ -392,16 +435,6 @@ footer a {
     height: 100px;
     width: 90%;
 }
-
-#form_add_comment_container .btn {
-    width: max-content;
-    margin: 10px 0;
-}
-
-#form_add_comment_container .btn {
-    color: rgb(106, 138, 159);
-}
-
 #form_add_comment_container label {
     color: rgb(106, 138, 159);
 }
@@ -412,9 +445,28 @@ footer a {
 }
 
 /*///////////////////////////////////////////////////////////////////////////ADMIN PANEL/////////////////////*/
+#admin_main_container {
+    width: 90%;
+    min-height: 80vh;
+    background-color: white;
+    padding: 20px;
+}
+
+#admin_main_container h1 {
+    text-align: center;
+    margin: 10px;
+    cursor: pointer;
+    color: rgb(106, 138, 159);
+}
+
 #menu_admin {
     display: flex;
     justify-content: center;
+}
+
+#menu_admin .btn {
+    margin: 10px;
+    cursor: pointer;
 }
 
 .visible {
@@ -426,13 +478,14 @@ footer a {
 }
 
 /******************************************Admin chapters**************/
-#admin_chapter h2 {
-    text-align: center;
+#admin_chapter {
+    padding: 40px 0px 0px 33px;
 }
-
 .list_content_admin {
     display: flex;
     flex-flow: row wrap;
+    justify-content: flex-start;
+    margin-top: 15px;
 }
 
 .admin_content_container {
@@ -442,14 +495,20 @@ footer a {
     justify-content: space-between;
     width: 200px;
     height: 300px;
-    margin: 20px 10px;
-    border: 1px solid black;
-    padding: 10px 5px;
+    margin: 10px 10px 0px 0px;
+    border: 1px solid rgb(106, 138, 159);
+    padding: 15px 5px;
+
+}
+
+.admin_content_container .bloc_btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .admin_content_container .resume {
     padding: 5px 10px;
-    overflow: hidden;
 }
 
 .admin_content_container .date_time {
@@ -461,13 +520,22 @@ footer a {
 }
 
 /*****************************************Admin comments**************/
+#admin_comment {
+    padding: 40px 0px 0px 33px;
+}
+
 #admin_comment h2 {
     text-align: center;
+    color: rgb(106, 138, 159);
 }
 
 .admin_comments_content {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
+}
+
+#admin_comment_container .admin_content_container {
+    overflow: auto;
 }
 
 #admin_comment_container .title_chapter_comment {
@@ -475,9 +543,9 @@ footer a {
     flex-flow: row wrap;
     align-items: baseline;
 }
-
-.title_chapter_comment h3 {
-    margin: 0px 5px;
+.title_chapter_comment {
+    cursor: pointer;
+    padding: 10px;
 }
 
 .com_visible {
@@ -489,20 +557,19 @@ footer a {
 }
 
 /***********************************Admin comments reported**************/
+
+#admin_comment_reported {
+    padding: 40px 0px 0px 33px;
+}
+
 #admin_comment_reported h2 {
     text-align: center;
+    color: rgb(106, 138, 159);
 }
 
-#admin_comment_reported span {
-    display: flex;
-    flex-flow: wrap;
-    justify-content: center;
-}
-
-#admin_comment_reported .acquit_com_btn {
-    border: 1px solid black;
-    padding: 5px;
-    margin: 5px;
+#admin_comment_reported .message_report_content {
+    color: rgb(218, 103, 74);
+    font-size: small;
 }
 
 /*////////////////////////////////////////////EDIT COMMENT PAGE//////////////////////////////////////////////////////////////////*/
@@ -538,9 +605,10 @@ footer a {
 }
 
 /*////////////////////////////////////////////CREATE CHAPTER PAGE//////////////////////////////////////////////////////////////////*/
-#create_chapter_page_container{
+#create_chapter_page_container {
     width: 60%;
 }
+
 #create_chapter_page_container form {
     display: flex;
     flex-direction: column;
@@ -557,44 +625,160 @@ footer a {
     width: auto;
     height: 30px;
 }
+
 #create_chapter_page_container .btn {
-width: max-content;
-align-self: center;
-margin: 10px;
+    width: max-content;
+    align-self: center;
+    margin: 10px;
+}
+/*////////////////////////////////////////////EDIT CHAPTER PAGE//////////////////////////////////////////////////////////////////*/
+#edit_chapter_page_container {
+    width: 60%;
+}
+
+#edit_chapter_page_container form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+#edit_chapter_page_container label {
+    color: rgb(27, 33, 39);
+    font-size: x-large;
+}
+
+#edit_chapter_page_container #title {
+    color: rgb(27, 33, 39);
+    width: auto;
+    height: 30px;
+}
+
+#edit_chapter_page_container .valid_btn {
+    width: max-content;
+    align-self: center;
+    margin: 10px;
 }
 /*////////////////////////////////////////////LOGIN PAGE//////////////////////////////////////////////////////////////////*/
-#login_forms_container{
+#login_forms_container {
     display: flex;
     flex-flow: row wrap;
     width: 60%;
     height: 80vh;
     background-color: white;
-    justify-content: space-evenly;
+    align-content: space-evenly;
 }
-#log_forms{
+
+#log_forms {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+    height: max-content;
+    align-self: center;
 }
-#login_form_container form{
+
+#log_forms h3 {
+    color: rgb(106, 138, 159);
+    margin-bottom: 10px;
+}
+
+#log_forms input {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#login_form_container form {
     display: flex;
     flex-direction: column;
 }
-#login_form_container input{
-    margin: 10px 0px;
-}
-#register_form_container form{
+
+#register_form_container form {
     display: flex;
     flex-direction: column;
 }
-#register_form_container input{
-    margin: 10px 0px;
+
+#register_form_container::before {
+    content: " ";
+    background-color: rgb(106, 138, 159);
+    width: 2px;
+    height: 300px;
+    position: absolute;
+    right: 50%;
 }
-#error_login_container{
-    width: 100%;
-    height: auto;
-    padding: 20px;
+
+#error_login_container {
+    width: max-content;
+    margin: auto;
+    border-bottom: rgb(218, 103, 74) 1px solid;
+    padding: 5px;
 }
-#error_login_container li{
-list-style: none;
+
+#error_login_container li {
+    list-style: none;
+    color: rgb(218, 103, 74);
+}
+
+#login_forms_container .btn {
+    margin-top: 10px;
+}
+
+#login_forms_container label {
+    color: rgb(106, 138, 159);
+    font-size: small;
+}
+
+/*////////////////////////////////////////////////////////////////ALERT MESSAGE/////////////////////////////////////////////////////////////////////*/
+.alert-success {
+    color: rgb(133, 173, 151);
+    text-align: center;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+}
+
+.alert-success::before {
+    content: " ";
+    background-color: rgb(133, 173, 151);
+    width: 100px;
+    height: 2px;
+    margin-right: 10px;
+}
+
+.alert-success::after {
+    content: " ";
+    background-color: rgb(133, 173, 151);
+    width: 100px;
+    height: 2px;
+    margin-left: 10px;
+
+}
+
+.alert-fail {
+    color:  rgb(218, 103, 74);
+    text-align: center;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+}
+
+.alert-fail::before {
+    content: " ";
+    background-color: rgb(218, 103, 74);
+    width: 100px;
+    height: 2px;
+    margin-right: 10px;
+}
+
+.alert-fail::after {
+    content: " ";
+    background-color: rgb(218, 103, 74);
+    width: 100px;
+    height: 2px;
+    margin-left: 10px;
+
 }

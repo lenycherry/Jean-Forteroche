@@ -1,10 +1,14 @@
 class MenuAdmin {
-    constructor(admin_chapters_btn, admin_comments_btn, admin_reported_btn) {
+    constructor(home_admin_title,admin_chapters_btn, admin_comments_btn, admin_reported_btn) {
+        this.homeAdminTitle = document.getElementById(home_admin_title)
         this.adminChapterBtn = document.getElementById(admin_chapters_btn);
         this.adminCommentBtn = document.getElementById(admin_comments_btn);
         this.adminReportedBtn = document.getElementById(admin_reported_btn);
 
 
+        this.homeAdminTitle.addEventListener("click", e => {
+            this.closeAll()
+        })
         this.adminChapterBtn.addEventListener("click", e => {
             this.closeAll()
             let container = document.getElementById('admin_chapter')

@@ -47,24 +47,39 @@ class CommentController
     }
     public function addComment($params)
     {
-        session_start();
         extract($params);
-        $params['pseudo'] = $_SESSION['pseudo'];
-        $manager = new CommentManager();
-        $manager->addComment($params);
-        $_SESSION['flash']['success'] = 'Ce commentaire a bien été ajouté';
+        $contentComment = trim($values['content']);
+        if (empty($contentComment)) {
+            session_start();
+            $_SESSION['flash']['fail'] = 'Un commentaire vide ne peut être créé';
+        } else {
+            session_start();
+            $params['pseudo'] = $_SESSION['pseudo'];
+            $manager = new CommentManager();
+            $manager->addComment($params);
+            $_SESSION['flash']['success'] = 'Ce commentaire a bien été ajouté';
+        }
         $myView = new View();
         $currentChapter = 'chapter/id/' . $id;
         $myView->redirect($currentChapter);
     }
     public function updateComment($params)
     {
-        $dataComment = $_POST['values'];
+        extract($params);
+        $dataComment = $values;
         $manager = new CommentManager();
         $currentComment = $manager->findComment($dataComment['id']);
-        $manager->updateComment($dataComment);
-        $chapterId = $currentComment->getChapterId();
-        $_SESSION['flash']['success'] = 'Ce commentaire a bien été édité';
+        $contentComment = trim($dataComment['content']);
+        if (empty($contentComment)) {
+            session_start();
+            $_SESSION['flash']['fail'] = 'Un commentaire vide ne peut être édité';
+            $chapterId = $currentComment->getChapterId();
+        } else {
+            $manager->updateComment($dataComment);
+            $chapterId = $currentComment->getChapterId();
+            session_start();
+            $_SESSION['flash']['success'] = 'Ce commentaire a bien été édité';
+        }
         $myView = new View();
         if (isset($admin)) {
             $myView->redirect('adminPanel');

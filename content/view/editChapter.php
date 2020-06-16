@@ -1,14 +1,16 @@
 <?php $title = 'Jean Forteroche - Editer un chapitre' ?>
 <?php if (isset($_SESSION['admin']) && ($_SESSION['admin'] == 1)) : ?>
-<div>
+<div id="edit_chapter_page_container">
 <h1>Edition de chapitre</h1>
 <form action="<?php echo HOST;?>updateChapter/id/" method="post">
-<input type ="text" value="<?php echo $currentChapter->getTitle();?>" name="values[title]" />
+<label for='title'>Titre</label>
+<input id="title"type ="text" value="<?php echo $currentChapter->getTitle();?>" name="values[title]" />
+<label for="textArea">Editer le chapitre</label>
 <textarea id='textArea' name= 'values[content]'>
    <?php echo $currentChapter->getContent();?>
   </textarea>
   <input type='hidden' name="values[id]" value = "<?php echo $currentChapter->getId();?>"/>
-  <input type="submit" value="Valider"/>
+  <input class="valid_btn btn" type="submit" value="Valider"/>
 </form>
 </div>
 <script>

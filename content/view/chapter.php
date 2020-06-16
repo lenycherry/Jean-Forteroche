@@ -5,14 +5,14 @@
     <div id="chapter_container">
         <h1> <?php echo $currentChapter->getTitle(); ?></h1>
         <p><?php echo $currentChapter->getContent(); ?></p>
-        <time>Crée le <?php echo $currentChapter->getCreateDate(); ?></time>
+        <time>Crée le <?php echo $currentChapter->getCreateDate();?></time>
     </div>
 
     <div id="comments_container">
         <?php if (isset($_SESSION['id'])) : ?>
             <form id="form_add_comment_container" action="<?php echo HOST; ?>addComment/id/<?php echo $currentChapter->getId() ?>" method="post">
                 <label for="area_add_comment_container">Ajouter un commentaire :</label>
-                <textarea id="area_add_comment_container" name='values[content]' placeholder="Votre commentaire" required></textarea>
+                <textarea id="area_add_comment_container" name='values[content]' placeholder="Votre commentaire" maxlength="500"  required></textarea>
                 <input class='btn' type="submit" value="Valider" />
             </form>
         <?php endif; ?>

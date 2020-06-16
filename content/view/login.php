@@ -11,19 +11,25 @@
         <div id="login_form_container">
             <h3>Se connecter</h3>
             <form action="<?php echo HOST; ?>userLogin" method="post">
-                <input type="text" placeholder="Votre pseudo" name="pseudo" value="">
-                <input type="password" placeholder="Mot de passe" name="mdp" value="">
+                <label for="login_pseudo">Pseudo</label>
+                <input id="login_pseudo" type="text" placeholder="Votre pseudo" name="pseudo" value="">
+                <label for="login_mdp">Mot de passe</label>
+                <input id="login_mdp" type="password" placeholder="Mot de passe" name="mdp" value="">
                 <button class="btn" type="submit">Se connecter</button>
             </form>
         </div>
         <div id="register_form_container">
             <h3>S'inscrire</h3>
             <form action="<?php echo HOST; ?>userRegister" method="post">
-                <input type="text" placeholder="Votre pseudo" name="pseudo" value="">
-                <input type="email" placeholder="Adresse mail" name="mail" value="">
-                <input type="password" placeholder="Mot de passe" name="mdp" value="">
-                <input type="password" placeholder="Confirmer le mot de passe" name="confmdp">
-                <button type="submit">Envoyer</button>
+            <label for="pseudo">Pseudo</label>
+                <input id="pseudo" type="text" placeholder="Votre pseudo" name="pseudo" value="">
+                <label for="mail">Mail</label>
+                <input id="mail" type="email" placeholder="Adresse mail" name="mail" value="">
+                <label for="mdp">Mot de passe</label>
+                <input id="mdp" type="password" placeholder="Mot de passe" name="mdp" value="">
+                <label for="confirm_mdp">Confirmation de mot de passe</label>
+                <input id="confirm_mdp" type="password" placeholder="Confirmer le mot de passe" name="confmdp">
+                <button class="btn" type="submit">Envoyer</button>
             </form>
         </div>
     </div>

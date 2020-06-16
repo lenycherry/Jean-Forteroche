@@ -19,7 +19,7 @@
                 <li id="chapter_menu"><i class="fas fa-book-open fa-2x"></i>
                     <ul class="list_menu">
                         <?php foreach ($chapters as $chapter) : ?>
-                            <li><a href="<?php echo HOST; ?>chapter/id/<?php echo $chapter['id'] ?>"><?php echo $chapter['title'] ?></a></li>
+                            <li><a href="<?php echo HOST; ?>chapter/id/<?php echo $chapter['id']; ?>"><?php echo $chapter['title'] ;?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </li>
@@ -55,7 +55,7 @@
         <?php endif; ?>
     </div>
 
-    <main><?php echo $content ?></main>
+    <main><?php echo $content; ?></main>
 
 
     <footer>

@@ -48,21 +48,36 @@ class ChapterController
     
     public function addChapter($params) 
     {
-        $dataChapter = $_POST['values'];
+        extract($params);
+        $contentChapter = trim($values['content']);
+        $titleChapter = trim($values['title']);
+        if (empty($contentChapter) || empty($titleChapter)) {
+            session_start();
+            $_SESSION['flash']['fail'] = 'Un champ vide ne peut être créé';
+        }else{
         $manager = new ChapterManager();
-        $manager->addChapter($dataChapter);
+        $manager->addChapter($values);
         session_start();
         $_SESSION['flash']['success'] = 'Ce chapitre a bien été ajouté';
+        }
         $myView = new View();
         $myView->redirect('adminPanel');
     }
     public function updateChapter($params)
     {
+        extract($params);
+        $contentChapter = trim($values['content']);
+        $titleChapter = trim($values['title']); 
+        if (empty($contentChapter) || empty($titleChapter)) {
+            session_start();
+            $_SESSION['flash']['fail'] = 'Un champ vide ne peut être édité';
+        }else{
         $dataChapter = $_POST['values'];
         $manager = new ChapterManager();
         $manager->updateChapter($dataChapter);
         session_start();
         $_SESSION['flash']['success'] = 'Ce chapitre a bien été édité';
+        }
         $myView = new View();
         $myView->redirect('adminPanel');
     }
