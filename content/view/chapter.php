@@ -32,10 +32,8 @@
                             <?php if ($_SESSION['pseudo'] === $comment['pseudo']) : ?>
                                 <a href="<?php echo HOST; ?>editComment/id/<?php echo $comment['id'] ?>" class="edit_com_btn btn">Editer</a>
                                 <a href="<?php echo HOST; ?>deleteComment/id/<?php echo $comment['id'] ?>" class="jf_alert erase_com_btn btn">Effacer</a>
-
-
                             <?php else : ?>
-                                <a href="<?php echo HOST; ?>reportComment/id/<?php echo $comment['id'] ?>" class=" jf_alert report_com_btn btn">Signaler</a>
+                                <a href="<?php echo HOST; ?>reportComment/id/<?php echo $comment['id'] ?>" class="jf_alert report_com_btn btn">Signaler</a>
                             <?php endif; ?>
                         <?php endif; ?>
                     </span>

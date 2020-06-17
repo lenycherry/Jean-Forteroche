@@ -29,11 +29,12 @@ class MenuAdmin {
         if (container.classList.contains('invisible')) {
             container.classList.replace('invisible', 'visible')
         }
-    };
+    }
     closeAll() {
         let containers = document.getElementsByClassName('visible')
         for (let i = 0; i < containers.length; i++) {
             containers[i].classList.replace('visible', 'invisible')
         }
     }
-};
+}
+let menuAdmin = new MenuAdmin ('home_admin_title','admin_chapters_btn', 'admin_comments_btn', 'admin_reported_btn')

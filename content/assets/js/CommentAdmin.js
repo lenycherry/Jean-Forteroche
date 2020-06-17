@@ -17,5 +17,6 @@ class CommentAdmin {
             container.classList.replace('com_visible', 'com_invisible')
         }
 
-    };
-};
+    }
+}
+let commentAdmin = new CommentAdmin('.title_chapter_comment')

@@ -13,3 +13,4 @@ class Alert {
         }
     }
 }
+let alertErase = new Alert()

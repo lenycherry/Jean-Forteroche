@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $title ?></title>
     <link href="<?php echo ASSETS; ?>css/style.css" rel="stylesheet" />
+    <link href="<?php echo ASSETS; ?>css/responsiv.css" rel="stylesheet" />
     <link href="<?php echo ASSETS; ?>fontawesome/css/all.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500&family=Oswald:wght@500&display=swap" rel="stylesheet">
     <script src="https://cdn.tiny.cloud/1/rrssibdlmdub4vn15tirsynq98km88ytywl7uys8kx9v8lfy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -56,11 +57,10 @@
     </div>
 
     <main><?php echo $content; ?></main>
-
-
+    <a href="#"><i class="fas fa-chevron-circle-up fa-2x"></i></a>
     <footer>
         <p>Blog Fictif PHP créé par Célia Gaudin dans le cadre d'un projet d'étude OpenClassrooms</p>
-        <p>Crédit photo <a href="https://unsplash.com/@jankronies">Jankronies</a></p>
+        <p>Crédit photo <a href="https://unsplash.com/@jankronies">Jankronies</a> - <a href="https://unsplash.com/@convertkit">ConverKit</a></p>
     </footer>
 
 </body>

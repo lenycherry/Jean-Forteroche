@@ -117,4 +117,4 @@
     <script src="<?php echo ASSETS; ?>js/Alert.js"></script>
     <script src="<?php echo ASSETS; ?>js/MenuAdmin.js"></script>
     <script src="<?php echo ASSETS; ?>js/CommentAdmin.js"></script>
-    <script src="<?php echo ASSETS; ?>js/_main.js"></script>
+ 

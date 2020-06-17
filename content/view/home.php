@@ -4,19 +4,28 @@
     <h1>Billet simple pour l'Alaska</h1>
     <h3>La nouvelle oeuvre de Jean Forteroche à découvrir chapitre par chapitre.</h3>
 </div>
-<div id="summary_container">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt risus a sem iaculis luctus. Donec quis ultricies orci, et laoreet enim. Proin nec eros tincidunt, ultricies ligula eget, consectetur velit. Quisque eget massa eu orci feugiat dapibus sit amet eu orci. Etiam posuere, libero sed faucibus iaculis, est dui malesuada velit, ut mattis urna augue et arcu. Proin et consequat metus, vel dapibus sem. Nulla commodo augue vel eleifend mollis. Nulla ac viverra dolor, et convallis turpis. Proin vitae purus sit amet odio blandit aliquet. Nulla ac mi quis est mattis dignissim sed ut leo. Suspendisse nec tortor eu tortor accumsan lobortis. Pellentesque facilisis malesuada leo eget aliquet. Sed scelerisque orci dui, lobortis ultrices enim vestibulum eu. Donec scelerisque vitae mi sit amet varius.</p>
-</div>
-<div id="new_chapter_container">
-    <?php $lastChapter = end($chapters); ?>
-    <h2><a href="<?php echo HOST; ?>chapter/id/<?php echo $lastChapter['id'] ?>">Dernier Chapitre publié</a></h2>
-    <div class="new_chapter_content">
-        <h3><?php echo $lastChapter['title']; ?></h3>
-        <article><?php echo substr($lastChapter['content'], 0, 900); ?> ...</article>
-        <h3><a href="<?php echo HOST; ?>chapter/id/<?php echo $lastChapter['id'] ?>">Lire le chapitre</a></h3>
+<div id='main_home_content'>
+    <div id="articles_container">
+        <section id="summary_container">
+            <h2>Un livre à découvrir par épisode</h2>
+            <p>Découvrez le premier Roman noir de Jean Forteroche. Publié chapitre par chapitre, ne ratez aucun épisode de "Billet simple pour l'Alaska", un thriller haletant au coeur d'un paysage sauvage et glacial.</p>
+        </section>
+        <section id="presentation_container">
+            
+            <img class="fj_picture" src="../content/assets/images/jf_picture.jpg" alt="Photo de Jean Forteroche">
+           <div class="presentation_p">
+           <h2>Jean Forteroche</h2>
+            <p>Acteur Français de renommée internationnal, Jean Forteroche est également un écrivain confirmé. Ses nouvelles "Les nouvelles de JF" ont déjà concquis le coeur de son public en 2019. Aujourd'hui Jean Forteroche s'attaque à un roman d'envergure dans un mode de publication gratuit et moderne.</p>
+           </div>
+        </section>
     </div>
-</div>
-<div id="presentation_container">
-    <h3>Jean Forteroche</h3>
-    <p>Morbi leo ipsum, interdum non ipsum quis, luctus venenatis urna. Sed at fringilla felis. Nunc vel molestie lorem. Nunc ligula leo, tempor id dictum ac, laoreet non felis. Aenean pellentesque lacus vitae dui porta faucibus. Etiam a elit quis erat condimentum efficitur finibus non magna. Ut luctus elit vel consectetur semper. Nulla a pellentesque ante. Quisque nibh turpis, consectetur a lobortis ac, feugiat et risus. Suspendisse lacinia eu ipsum at mollis. Fusce sollicitudin risus sed arcu scelerisque, a rhoncus ex porta.</p>
+    <div id="new_chapter_container">
+        <?php $lastChapter = end($chapters); ?>
+        <h2><a href="<?php echo HOST; ?>chapter/id/<?php echo $lastChapter['id'] ?>">Dernier Chapitre publié</a></h2>
+        <article class="new_chapter_content">
+            <h3><?php echo $lastChapter['title']; ?></h3>
+            <p><?php echo substr($lastChapter['content'], 0, 500); ?> ...</p>
+            <div class="btn"><a href="<?php echo HOST; ?>chapter/id/<?php echo $lastChapter['id'] ?>">Lire le chapitre</a></div>
+        </article>
+    </div>
 </div>

@@ -111,6 +111,7 @@ class CommentController
         if ($currentComment->getAcquit() != 1) {
             $manager->reportComment($currentComment);
         }
+        session_start();
         $_SESSION['flash']['success'] = 'Ce commentaire a bien été signalé';
         $myView = new View();
         $chapterId = $currentComment->getChapterId();
