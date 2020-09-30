@@ -11,5 +11,6 @@ For validate my PHP training, i have to create alone a PHP blog that the writer 
 * SEO
 * W3C standards
 * Use CSS3 and Javascript to manage Front-end and create a dynamic site.
+* Responsiv
 
 ## :computer: [See the website](https://celiagaudin.fr/jeanForteroche/home)
